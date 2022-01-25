@@ -1,0 +1,19 @@
+{
+  "name": "charactersheet-dnd",
+  "version": "0.1.0",
+  "description": "Character sheet for Dungeons and Dragons 5th Edition",
+  "main": "app.js",
+  "author": "Austin Wilson",
+  "license": "ISC",
+  "script": {
+    "start": "node app.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+  },
+  "dependencies": {
+    "express": "^4.17.2",
+    "express-generator": "^4.16.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
