@@ -1,7 +1,7 @@
 ## Available Scripts
 
 Build React App:
-### `cd client && npm install && npm run build`
+### `npm build`
 
 To start server from root directory:
 
