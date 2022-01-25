@@ -13,24 +13,27 @@ function GeneralInfo() {
                     <div class="col-two-third">
                         <div class="row">
                             <div class="formInput">
-                                <input type="text" name="class" placeholder=" "/><label>Class</label>
+                                <input type="text" name="class" class="textInput" placeholder=" "/><label>Class</label>
+                            </div>
+                            <div class="formInput smallInput">
+                                <input type="number" class='numericInput' min="1" max="20" name="level" placeholder=" "/><label>Level</label>
                             </div>
                             <div class="formInput">
-                                <input type="number" min="1" max="20" name="level" placeholder=" "/><label>Level</label>
+                                <input  type="text" name="background" class="textInput" placeholder=" "/><label>Background</label>
                             </div>
-                            <div class="formInput">
+                            {/*<div class="formInput">
                                 <input  type="text" name="playerName" placeholder=" "/><label>Player Name</label>
-                            </div>
+                            </div> */}
                         </div>
                         <div class="row">
                             <div class="formInput">
-                                <input type="text" name="race" placeholder=" "/><label>Race</label>
+                                <input type="text" name="race" class="textInput" placeholder=" "/><label>Race</label>
                             </div>
                             <div class="formInput">
-                                <input type="text" name="alignment" placeholder=" "/><label>Alignment</label>
+                                <input type="text" name="alignment" class="textInput" placeholder=" "/><label>Alignment</label>
                             </div>
-                            <div class="formInput">
-                                <input type="text" name="xp" placeholder=" "/><label>Experience Points</label>
+                            <div class="formInput smallInput">
+                                <input type="number" min="0" name="xp" class="numericInput" placeholder=" "/><label>XP</label>
                             </div>
                         </div>
                     </div>

@@ -1,3 +1,5 @@
+//import { useState } from 'react'
+
 import Attributes from './Attributes/Attributes'
 import ProficiencyBonus from './ProficiencyBonus'
 import Inspiration from './Inspiration'
@@ -8,29 +10,29 @@ import Skills from './Skills/Skills'
 
 function Stats() {
      // todo: boost to top level, add logic, compute modifiers, etc
-     const attributes = new Map([
-        ['strength', 0],
-        ['dexterity', 0],
-        ['constitution', 0],
-        ['intelligence', 0],
-        ['wisdom', 0],
-        ['charisma', 0]
+     const defaultAttr = new Map([
+        ['strength', 10],
+        ['dexterity', 10],
+        ['constitution', 10],
+        ['intelligence', 10],
+        ['wisdom', 10],
+        ['charisma', 10]
     ]);
 
     return (
         <div class="col-third">
             <div class="container">
                 <Attributes 
-                    attributes = {attributes}
+                    attributes = {defaultAttr}
                 />
                 <div id="skillsArea">
                     <Inspiration/>
                     <ProficiencyBonus/>
                     <Saves 
-                        attributes = {attributes}
+                        attributes = {defaultAttr}
                     />
                     <Skills
-                        attributes = {attributes}
+                        attributes = {defaultAttr}
                     />
                 </div>
             </div>

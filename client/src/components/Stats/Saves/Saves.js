@@ -3,7 +3,7 @@ import SavesRow from "./SavesRow"
 function renderSaves(attributes) {
     const renderArray = []
     attributes.forEach((score, attr) => {
-      renderArray.push(<SavesRow attribute={attr} />)
+      renderArray.push(<SavesRow key={attr} attribute={attr} />)
     })
     return renderArray
   }

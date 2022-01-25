@@ -1,4 +1,11 @@
 function Personality () {
+    const personalityBlocks = {
+        "traits" : "",
+        "ideals" : "",
+        "bonds" : "",
+        "flaws" : ""
+    }
+    
     return (
         <article id="Personality">
             <div class="block">

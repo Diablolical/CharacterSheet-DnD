@@ -68,12 +68,6 @@ label.large {
     padding:4px;
 }
 
-
-article {
-    margin-bottom: 10px;
-    overflow: auto;
-}
-
 #wrapper {
     float: none;
     width: 1200px;
@@ -103,6 +97,7 @@ article {
     -webkit-box-align: center;
     align-items: center;
     row-gap: 8px;
+    margin: 0em 1em 2em 1em;
 }
 
 .bigInput {
@@ -111,6 +106,12 @@ article {
 
 .smallInput {
     width: 7em;
+}
+
+.smallInput .numericInput {
+    padding: 5px 0px;
+    width: 100%;
+    text-align: center;
 }
 
 .mediumInput {
@@ -154,6 +155,7 @@ article {
 
 .row#characterName input {
     font-size: 28px;
+    height: 42px;
 }
 
 .formInput {
@@ -196,8 +198,12 @@ article {
 }
 
 #general .formInput {
-    margin-right: 10px;
-    margin-bottom: 10px;
+    margin-right: 1em;
+    margin-bottom: 1em;
+}
+
+#general .formInput .textInput {
+    width: 14em;
 }
 
 #attributes {
@@ -267,7 +273,6 @@ article {
 
 #saves {
     width: 100%;
-    overflow: auto;
 }
 
 .skillRow {
