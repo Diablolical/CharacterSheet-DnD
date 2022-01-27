@@ -1,8 +1,8 @@
 function PassivePerception () {
     return (
         <article id="passivePerception">
-            <div class="block">
-                <h3>Passive Perception</h3>
+           <div class="insp-prof-container">
+                <div class="value"><span></span></div><div class="label"><span>Passive Perception</span></div>
             </div>
         </article>
     )
