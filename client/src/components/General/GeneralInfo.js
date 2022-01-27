@@ -1,5 +1,5 @@
-import TextInput from "../Shared/TextInput"
-import NumericInput from "../Shared/NumericInput"
+import TextInput from "../Common/TextInput"
+import NumericInput from "../Common/NumericInput"
 
 function GeneralInfo({ data, update }) {
     return (

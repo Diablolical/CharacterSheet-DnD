@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import clone from 'clone'
 import GeneralInfo from './General/GeneralInfo'
 import Stats from './Stats/Stats'
 import Combat from './Combat/Combat'
 import Character from './Character/Character'
-import { calcProficiencyBonus } from './Shared/helpers'
+import Loading from './Common/Loading'
+import { calcProficiencyBonus, getCharacterData } from './Shared/helpers'
 
 const defaultCharacterData = {
     "general": {
@@ -17,21 +18,31 @@ const defaultCharacterData = {
         "experience": 0
     },
     "attributes": [
-        { name: "strength", score: 10 },
-        { name: "dexterity", score: 10 },
-        { name: "constitution", score: 10 },
-        { name: "intelligence", score: 10 },
-        { name: "wisdom", score: 10 },
-        { name: "charmisma", score: 10 }
+        { name: "strength", score: 10, isProficient: false },
+        { name: "dexterity", score: 10, isProficient: false },
+        { name: "constitution", score: 10, isProficient: false },
+        { name: "intelligence", score: 10, isProficient: false },
+        { name: "wisdom", score: 10, isProficient: false },
+        { name: "charmisma", score: 10, isProficient: false }
+    ],
+    "skills": [
+        { name: "strength", isProficient: false },
     ]
 }
 
-function CharacterSheet() {
+function CharacterSheet({ characterId }) {
     const [character, updateCharacter] = useState(defaultCharacterData)
+    const [loading, setLoading] = useState(false)
+    
+    useEffect((characterId) => {
+        if (characterId) {
+            getCharacterData(characterId, updateCharacter, setLoading)
+        }
+    }, [])
 
-    const updateAttribute = (name, score) => {
+    const updateAttributeScore = (name, score) => {
         score = parseInt(score)
-        let index = character.attributes.findIndex((attr) => { return attr.name === name})
+        const index = character.attributes.findIndex((attr) => { return attr.name === name})
         if (character.attributes[index].score !== score) {
             const updated = clone(character)
             updated.attributes[index].score = score
@@ -48,6 +59,9 @@ function CharacterSheet() {
         }
     }
 
+    if (loading) {
+        return (<Loading />)
+    }
     return (
         <form name="character-sheet" id="sheet">
             <GeneralInfo
@@ -57,7 +71,7 @@ function CharacterSheet() {
             <div class="wrapper wide">
                 <Stats
                     attributes={character.attributes}
-                    updateAttribute={updateAttribute}
+                    updateAttributeScore={updateAttributeScore}
                     proficiencyBonus={calcProficiencyBonus(character.general.level)}
                 />
                 <Combat />
