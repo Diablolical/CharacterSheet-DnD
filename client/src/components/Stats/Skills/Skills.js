@@ -1,20 +1,20 @@
 import SkillsRow from './SkillsRow'
 
-function renderSkills(skills) {
+function _renderSkills(skills) {
     const renderArray = []
-    skills.forEach((score, skill) => {
-      renderArray.push(<SkillsRow skill={skill} />)
+    skills.forEach((index, skill) => {
+      renderArray.push(<SkillsRow key={index} skill={skill} />)
     })
     return renderArray
-  }
+}
 
-function Skills() {
+function Skills({ attributes, proficiencyBonus }) {
     const skills = new Map();
     return(
         <article id="skills">
             <div class="block">
                 <h3>Skills</h3>
-                {renderSkills(skills)}
+                {_renderSkills(skills)}
             </div>
         </article>
     )

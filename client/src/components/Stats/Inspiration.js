@@ -1,8 +1,8 @@
 function Inspiration () {
     return (
         <article id="inspiration">
-            <div class="block">
-                <h3>Inspiration</h3>
+           <div class="insp-prof-container">
+                <div class="value"><input type="checkbox" name="inspiration" class="inspiration" /></div><div class="label"><span>Inspiration</span></div>
             </div>
         </article>
     )

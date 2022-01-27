@@ -1,15 +1,13 @@
-import { useState } from 'react'
 import { calcMod } from '../../Shared/helpers'
 
-function Attribute ({ attribute, defaultScore }) {
-    const [score, setScore] = useState(defaultScore)
-    let mod = calcMod(score);
+function Attribute ({ attribute, updateAttribute }) {
+    let mod = calcMod(attribute.score);
     return (
         <div class="attributeContainer">
-            <label class="attrLabel">{attribute.charAt(0).toUpperCase() + attribute.slice(1)}</label>
+            <label class="attrLabel">{attribute.name.charAt(0).toUpperCase() + attribute.name.slice(1)}</label>
             <span class="attrMod">{(mod > 0) ? "+" + mod : mod}</span>
             <div class="attrScore">
-                <input type="text" name="{attribute}" class="attrInput" value={score} onChange={event => setScore(event.target.value)}/>
+                <input type="number" min="1" max="30" name="{attribute.name}" class="attrInput" value={attribute.score} onChange={(e) => updateAttribute(attribute.name, e.target.value)} />
             </div>
         </div>
     )

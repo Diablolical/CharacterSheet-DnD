@@ -1,19 +1,19 @@
 import SavesRow from "./SavesRow"
 
-function renderSaves(attributes) {
+function _renderSaves(attributes, proficiencyBonus) {
     const renderArray = []
-    attributes.forEach((score, attr) => {
-      renderArray.push(<SavesRow key={attr} attribute={attr} />)
+    attributes.forEach((attr) => {
+      renderArray.push(<SavesRow key={attr.name} attribute={attr} proficiencyBonus={proficiencyBonus} />)
     })
     return renderArray
   }
 
-function Saves({ attributes }) {
+function Saves({ attributes, proficiencyBonus }) {
     return (
         <article id="saves">
             <div class="block">
                 <h3>Saving Throws</h3>
-                {renderSaves(attributes)}
+                {_renderSaves(attributes, proficiencyBonus)}
             </div>
         </article>
     )
