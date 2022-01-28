@@ -1,6 +1,5 @@
 import CharacterSheet from './components/CharacterSheet'
 import Logo from './images/logo.png'
-import { getCharacterData } from './components/Shared/helpers'
 
 function App() {
   const characterId = null // set if loading saved data

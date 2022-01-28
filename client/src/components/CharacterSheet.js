@@ -23,14 +23,32 @@ const defaultCharacterData = {
         { name: "constitution", score: 10, isProficient: false },
         { name: "intelligence", score: 10, isProficient: false },
         { name: "wisdom", score: 10, isProficient: false },
-        { name: "charmisma", score: 10, isProficient: false }
+        { name: "charisma", score: 10, isProficient: false }
     ],
     "skills": [
-        { name: "strength", isProficient: false },
+        { name: "acrobatics", isProficient: false },
+        { name: "animal handling", isProficient: false },
+        { name: "arcana", isProficient: false },
+        { name: "athletics", isProficient: false },
+        { name: "deception", isProficient: false },
+        { name: "history", isProficient: false },
+        { name: "insight", isProficient: false },
+        { name: "intimidation", isProficient: false },
+        { name: "investigation", isProficient: false },
+        { name: "medicine", isProficient: false },
+        { name: "nature", isProficient: false },
+        { name: "perception", isProficient: false },
+        { name: "performance", isProficient: false },
+        { name: "persuasion", isProficient: false },
+        { name: "religion", isProficient: false },
+        { name: "slight of hand", isProficient: false },
+        { name: "stealth", isProficient: false },
+        { name: "survival", isProficient: false },
     ]
 }
 
 function CharacterSheet({ characterId }) {
+    //todo: convert to useContext to reduce callbacks (?)
     const [character, updateCharacter] = useState(defaultCharacterData)
     const [loading, setLoading] = useState(false)
     
@@ -49,6 +67,20 @@ function CharacterSheet({ characterId }) {
             updateCharacter(updated)
         }
     }
+    
+    const updateSaveProficiency = (name, newValue) => {
+        const index = character.attributes.findIndex((attr) => { return attr.name === name})
+        const updated = clone(character)
+        updated.attributes[index].isProficient = newValue
+        updateCharacter(updated)
+    }
+
+    const updateSkillProficiency = (name, newValue) => {
+        const index = character.skills.findIndex((skill) => { return skill.name === name})
+        const updated = clone(character)
+        updated.skills[index].isProficient = newValue
+        updateCharacter(updated)
+    }
 
     const updateGeneralInfo = (field, newValue) => {
         let current = character.general[field]
@@ -62,6 +94,7 @@ function CharacterSheet({ characterId }) {
     if (loading) {
         return (<Loading />)
     }
+
     return (
         <form name="character-sheet" id="sheet">
             <GeneralInfo
@@ -71,7 +104,10 @@ function CharacterSheet({ characterId }) {
             <div class="wrapper wide">
                 <Stats
                     attributes={character.attributes}
+                    skills={character.skills}
                     updateAttributeScore={updateAttributeScore}
+                    updateSaveProficiency={updateSaveProficiency}
+                    updateSkillProficiency={updateSkillProficiency}
                     proficiencyBonus={calcProficiencyBonus(character.general.level)}
                 />
                 <Combat />

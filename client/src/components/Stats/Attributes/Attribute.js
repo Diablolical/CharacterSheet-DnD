@@ -1,13 +1,13 @@
 import { calcMod } from '../../Shared/helpers'
 
-function Attribute ({ attribute, updateAttribute }) {
+function Attribute ({ attribute, updateAttributeScore }) {
     let mod = calcMod(attribute.score);
     return (
         <div class="attributeContainer">
             <label class="attrLabel">{attribute.name.charAt(0).toUpperCase() + attribute.name.slice(1)}</label>
             <span class="attrMod">{(mod > 0) ? "+" + mod : mod}</span>
             <div class="attrScore">
-                <input type="number" min="1" max="30" name="{attribute.name}" class="attrInput" value={attribute.score} onChange={(e) => updateAttribute(attribute.name, e.target.value)} />
+                <input type="number" min="1" max="30" name="{attribute.name}" class="attrInput" value={attribute.score} onChange={(e) => updateAttributeScore(attribute.name, e.target.value)} />
             </div>
         </div>
     )

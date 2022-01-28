@@ -1,17 +1,17 @@
 import Attribute from './Attribute'
 
-function _renderAttributes(attributes, updateAttribute) {
+function _renderAttributes(attributes, updateAttributeScore) {
   const renderArray = []
   attributes.forEach((attr) => {
-    renderArray.push(<Attribute key={attr.name} attribute={attr} updateAttribute={updateAttribute} />)
+    renderArray.push(<Attribute key={attr.name} attribute={attr} updateAttributeScore={updateAttributeScore} />)
   })
   return renderArray
 }
 
-function Attributes({ attributes, updateAttribute }) {
+function Attributes({ attributes, updateAttributeScore }) {
   return (
       <article id="attributes">
-          {_renderAttributes(attributes, updateAttribute)}
+          {_renderAttributes(attributes, updateAttributeScore)}
       </article>   
   )
 }
