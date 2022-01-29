@@ -30,12 +30,12 @@ function Saves({ attributes, proficiencyBonus, updateSaveProficiency }) {
     }
     
     return (
-        <article id="saves">
+        <div id="saves">
             <div class="block">
                 <h4>Saving Throws</h4>
                 {_renderSaves(attributes, proficiencyBonus, canAdd, updateProficiency)}
             </div>
-        </article>
+        </div>
     )
 }
 

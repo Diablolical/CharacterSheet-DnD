@@ -10,9 +10,9 @@ function _renderAttributes(attributes, updateAttributeScore) {
 
 function Attributes({ attributes, updateAttributeScore }) {
   return (
-      <article id="attributes">
+      <div id="attributes">
           {_renderAttributes(attributes, updateAttributeScore)}
-      </article>   
+      </div>   
   )
 }
 

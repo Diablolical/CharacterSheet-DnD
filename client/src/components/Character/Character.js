@@ -1,12 +1,14 @@
 import Personality from "./Personality/Personality"
 import Features from './Features'
 
-function Character() {
+function Character({ features }) {
     return (
         <div class="col-third">
             <div class="container">
-                <Personality></Personality>
-                <Features></Features>
+                <Personality
+                    personality={features.personality}
+                />
+                <Features/>
             </div>
         </div>
     )

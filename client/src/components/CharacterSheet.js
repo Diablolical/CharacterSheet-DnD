@@ -8,16 +8,16 @@ import Loading from './Common/Loading'
 import { calcProficiencyBonus, getCharacterData } from './Shared/helpers'
 
 const defaultCharacterData = {
-    "general": {
-        "characterName": "",
-        "class": "",
-        "level": 1,
-        "background": "",
-        "race": "",
-        "alignment": "",
-        "experience": 0
+    general: {
+        characterName: "",
+        class: "",
+        level: 1,
+        background: "",
+        race: "",
+        alignment: "",
+        experience: 0
     },
-    "attributes": [
+    attributes: [
         { name: "strength", score: 10, isProficient: false },
         { name: "dexterity", score: 10, isProficient: false },
         { name: "constitution", score: 10, isProficient: false },
@@ -25,7 +25,7 @@ const defaultCharacterData = {
         { name: "wisdom", score: 10, isProficient: false },
         { name: "charisma", score: 10, isProficient: false }
     ],
-    "skills": [
+    skills: [
         { name: "acrobatics", isProficient: false },
         { name: "animal handling", isProficient: false },
         { name: "arcana", isProficient: false },
@@ -44,7 +44,19 @@ const defaultCharacterData = {
         { name: "slight of hand", isProficient: false },
         { name: "stealth", isProficient: false },
         { name: "survival", isProficient: false },
-    ]
+    ],
+    features: {
+        personality: [
+            { "traits" : "" },
+            { "ideals" : "" },
+            { "bonds" : "" },
+            { "flaws" : "" }
+        ]
+    }
+}
+
+function _getIndexByName (arr, propertyName) {
+    return arr.findIndex((obj) => { return obj.name === propertyName})
 }
 
 function CharacterSheet({ characterId }) {
@@ -58,25 +70,32 @@ function CharacterSheet({ characterId }) {
         }
     }, [])
 
+    const update = (propToUpdate, index, key, newValue) => {
+        const updated = clone(character)
+        updated[propToUpdate][index][key] = 
+        updateCharacter(updated)
+    }
+
     const updateAttributeScore = (name, score) => {
         score = parseInt(score)
-        const index = character.attributes.findIndex((attr) => { return attr.name === name})
+        const index = _getIndexByName(character.attributes, name)
         if (character.attributes[index].score !== score) {
             const updated = clone(character)
             updated.attributes[index].score = score
+            console.log(updated)
             updateCharacter(updated)
         }
     }
     
     const updateSaveProficiency = (name, newValue) => {
-        const index = character.attributes.findIndex((attr) => { return attr.name === name})
+        const index = _getIndexByName(character.attributes, name)
         const updated = clone(character)
         updated.attributes[index].isProficient = newValue
         updateCharacter(updated)
     }
 
     const updateSkillProficiency = (name, newValue) => {
-        const index = character.skills.findIndex((skill) => { return skill.name === name})
+        const index = _getIndexByName(character.skills, name)
         const updated = clone(character)
         updated.skills[index].isProficient = newValue
         updateCharacter(updated)
@@ -111,7 +130,9 @@ function CharacterSheet({ characterId }) {
                     proficiencyBonus={calcProficiencyBonus(character.general.level)}
                 />
                 <Combat />
-                <Character />
+                <Character 
+                    features={character.features}
+                />
             </div>
         </form>
     )
