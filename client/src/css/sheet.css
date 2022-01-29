@@ -181,7 +181,7 @@ label.large {
     top: 50%;
     transform: translateY(-50%);
     background-color: white;
-    color: rgba(0, 0, 0, 0.87);
+    color: rgba(0, 0, 0, 0.67);
     padding: 0 0.3rem;
     margin: 0 0.5rem;
     transition: .1s ease-out;
@@ -255,7 +255,7 @@ label.large {
     background-color: white;
 }
 
-.attrScore .attrInput {
+.attrScore .attrInput, #combatStats .attrInput {
     font-size: 18px;
     height: 100%;
     width: 100%;
@@ -274,18 +274,12 @@ label.large {
   margin: 0;
 }
 
-#skillsArea {
-    max-width: 250px;
-    float: left;
-    margin-left: 10px;
-}
-
 .insp-prof-container {
     height: 50px;
     transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     border-radius: 4px;
     border: 1px solid rgba(0, 0, 0, 0.12);
-    margin: 0em 1em 2em 1em;
+    margin: 0em 1em 1em 1em;
     width: 100%;
     display: flex;
 }
@@ -337,8 +331,21 @@ label.large {
     font-weight: bold;
 }
 
+.sectionLabel {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: -.5em;
+}
+
 #saves {
     width: 100%;
+}
+
+#skillsArea {
+    max-width: 250px;
+    float: left;
+    margin-left: 10px;
 }
 
 .skillRow {
@@ -350,6 +357,31 @@ label.large {
     line-height: 1em;
     text-align: left;
     padding: .5em;
+}
+
+#combatStats {
+    display: flex;
+    flex-direction: row;
+}
+
+#personality {
+    margin-bottom: 2em;
+}
+
+.personalityBlock {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.personalityLabel {
+    width: 100%;
+    font-weight: bold;
+    text-align: center;
 }
 
 .spell-table-row {

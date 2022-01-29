@@ -61,52 +61,56 @@ function _getIndexByName (arr, propertyName) {
 
 function CharacterSheet({ characterId }) {
     //todo: convert to useContext to reduce callbacks (?)
-    const [character, updateCharacter] = useState(defaultCharacterData)
+    const [general, updateGeneral] = useState(defaultCharacterData.general)
+    const [attributes, updateAttributes] = useState(defaultCharacterData.attributes)
+    const [skills, updateSkills] = useState(defaultCharacterData.skills)
+    const [features, updateFeatures] = useState(defaultCharacterData.features)
     const [loading, setLoading] = useState(false)
+
+    
     
     useEffect((characterId) => {
+        const updateCharacter = (data) => {
+            updateGeneral(data.general)
+            updateAttributes(data.attributes)
+            updateSkills(data.skills)
+            updateFeatures(data.features)
+        }
         if (characterId) {
             getCharacterData(characterId, updateCharacter, setLoading)
         }
     }, [])
 
-    const update = (propToUpdate, index, key, newValue) => {
-        const updated = clone(character)
-        updated[propToUpdate][index][key] = 
-        updateCharacter(updated)
+    const updatePropArray = (stateToUpdate, callback, index, key, newValue) => {
+        const updated = clone(stateToUpdate)
+        updated[index][key] = newValue
+        callback(updated)
     }
 
     const updateAttributeScore = (name, score) => {
         score = parseInt(score)
-        const index = _getIndexByName(character.attributes, name)
-        if (character.attributes[index].score !== score) {
-            const updated = clone(character)
-            updated.attributes[index].score = score
-            console.log(updated)
-            updateCharacter(updated)
+        const index = _getIndexByName(attributes, name)
+        if (attributes[index].score !== score) {
+            updatePropArray(attributes, updateAttributes, index, 'score', score)
         }
     }
     
     const updateSaveProficiency = (name, newValue) => {
-        const index = _getIndexByName(character.attributes, name)
-        const updated = clone(character)
-        updated.attributes[index].isProficient = newValue
-        updateCharacter(updated)
+        const index = _getIndexByName(attributes, name)
+        updatePropArray(attributes, updateAttributes, index, 'isProficient', newValue)
     }
 
     const updateSkillProficiency = (name, newValue) => {
-        const index = _getIndexByName(character.skills, name)
-        const updated = clone(character)
-        updated.skills[index].isProficient = newValue
-        updateCharacter(updated)
+        const index = _getIndexByName(skills, name)
+        updatePropArray(skills, updateSkills, index, 'isProficient', newValue)
     }
 
     const updateGeneralInfo = (field, newValue) => {
-        let current = character.general[field]
+        let current = general[field]
         if (current !== newValue) {
-            const updated = clone(character)
-            updated.general[field] = newValue
-            updateCharacter(updated)
+            const updated = clone(general)
+            updated[field] = newValue
+            updateGeneral(updated)
         }
     }
 
@@ -117,21 +121,21 @@ function CharacterSheet({ characterId }) {
     return (
         <form name="character-sheet" id="sheet">
             <GeneralInfo
-                data={character.general}
+                data={general}
                 update={updateGeneralInfo}
             />
             <div class="wrapper wide">
                 <Stats
-                    attributes={character.attributes}
-                    skills={character.skills}
+                    attributes={attributes}
+                    skills={skills}
                     updateAttributeScore={updateAttributeScore}
                     updateSaveProficiency={updateSaveProficiency}
                     updateSkillProficiency={updateSkillProficiency}
-                    proficiencyBonus={calcProficiencyBonus(character.general.level)}
+                    proficiencyBonus={calcProficiencyBonus(general.level)}
                 />
                 <Combat />
                 <Character 
-                    features={character.features}
+                    features={features}
                 />
             </div>
         </form>

@@ -9,7 +9,7 @@ function _renderPersonalityBlocks (blocks, updateCallback) {
     return renderArray
 }
 
-function Personality ({ personality }) {
+function Personality ({ personality, updateData }) {
 
     const [traits, updateTraits] = useState(personality.traits)
     const [ideals, updateIdeals] = useState(personality.ideals)
@@ -26,15 +26,13 @@ function Personality ({ personality }) {
     const updateCallback = (name, value) => {
         personalityBlocks.forEach((block) => {
             if (block.name === name) {
-                console.log("updating value for block %s from child component to %s", name, value)
-                personality[name] = value
                 block.callback(value)
             }
         })
     }
     
     return (
-        <div id="Personality">
+        <div id="personality">
             {_renderPersonalityBlocks(personalityBlocks, updateCallback)}
         </div>
     )
