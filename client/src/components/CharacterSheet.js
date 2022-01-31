@@ -67,8 +67,6 @@ function CharacterSheet({ characterId }) {
     const [features, updateFeatures] = useState(defaultCharacterData.features)
     const [loading, setLoading] = useState(false)
 
-    
-    
     useEffect((characterId) => {
         const updateCharacter = (data) => {
             updateGeneral(data.general)

@@ -275,7 +275,7 @@ label.large {
 }
 
 .insp-prof-container {
-    height: 50px;
+    height: 40px;
     transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     border-radius: 4px;
     border: 1px solid rgba(0, 0, 0, 0.12);
@@ -288,18 +288,18 @@ label.large {
     display: inline-block;
     border: 1px solid #666;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     position: relative;
 }
 
 .insp-prof-container .value span {
     font-size: 24px;
     font-weight: normal;
-    line-height: 48px;
+    line-height: 38px;
     width: 100%;
     text-align: center;
-    margin-left: 12px;
+    margin-left: 8px;
 }
 
 .insp-prof-container .value .inspiration {
@@ -327,7 +327,7 @@ label.large {
     font-size: 20px;
     width: 100%;
     text-align: center;
-    line-height: 30px;
+    line-height: 20px;
     font-weight: bold;
 }
 

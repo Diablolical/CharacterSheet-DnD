@@ -5,8 +5,19 @@ import PassivePerception from './PassivePerception'
 import Languages from './Languages'
 import Saves from './Saves/Saves'
 import Skills from './Skills/Skills'
+import { calcMod } from "../Shared/helpers"
+
+const _calcPassivePerception = (attributes, skills, proficiencyBonus) => {
+    const wisdom = attributes.find((attr) => { return attr.name === 'wisdom'})
+    const perception = skills.find((skill) => { return skill.name === 'perception'})
+    let bonus = perception.isProficient ? proficiencyBonus : 0;
+    return 10 + calcMod(wisdom.score) + bonus;
+}
 
 function Stats({ attributes, skills, updateAttributeScore, updateSaveProficiency, updateSkillProficiency, proficiencyBonus }) {
+
+    const passivePerception = _calcPassivePerception(attributes, skills, proficiencyBonus)
+    
     return (
         <div class="col-third">
             <div class="container">
@@ -34,8 +45,7 @@ function Stats({ attributes, skills, updateAttributeScore, updateSaveProficiency
             </div>
             <div class="container">
                 <PassivePerception
-                    skills={skills}
-                    proficiencyBonus={proficiencyBonus}
+                    value={passivePerception}
                 />
                 <Languages/>
             </div>
