@@ -1,6 +1,6 @@
-function Loading ({ full }) {
+function Loading () {
   return (
-    <div class="loading"></div>
+    <div id="loading"></div>
   )
 }
 

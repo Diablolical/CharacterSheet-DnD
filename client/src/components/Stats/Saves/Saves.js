@@ -31,8 +31,8 @@ function Saves({ attributes, proficiencyBonus, updateSaveProficiency }) {
     
     return (
         <div id="saves">
-            <div class="block">
-                <div class="sectionLabel"><label>Saving Throws</label></div>
+            <div className="block">
+                <div className="sectionLabel"><label>Saving Throws</label></div>
                 {_renderSaves(attributes, proficiencyBonus, canAdd, updateProficiency)}
             </div>
         </div>

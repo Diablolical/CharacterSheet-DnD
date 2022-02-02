@@ -19,8 +19,8 @@ function Stats({ attributes, skills, updateAttributeScore, updateSaveProficiency
     const passivePerception = _calcPassivePerception(attributes, skills, proficiencyBonus)
     
     return (
-        <div class="col-third">
-            <div class="container">
+        <div className="col-third">
+            <div className="container">
                 <Attributes 
                     attributes = {attributes}
                     updateAttributeScore = {updateAttributeScore}
@@ -43,7 +43,7 @@ function Stats({ attributes, skills, updateAttributeScore, updateSaveProficiency
                     />
                 </div>
             </div>
-            <div class="container">
+            <div className="container">
                 <PassivePerception
                     value={passivePerception}
                 />

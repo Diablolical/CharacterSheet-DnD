@@ -1,7 +1,7 @@
 function Equipment() {
     return (
         <div id="equipment">
-            <div class="block">
+            <div className="block">
                 <h3>Equipment</h3>
             </div>
         </div>

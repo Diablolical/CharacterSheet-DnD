@@ -38,8 +38,8 @@ function _renderSkills(attributes, skills, update, proficiencyBonus) {
 function Skills({ attributes, skills, updateSkillProficiency, proficiencyBonus }) {
     return(
         <div id="skills">
-            <div class="block">
-                <div class="sectionLabel"><label>Skills</label></div>
+            <div className="block">
+                <div className="sectionLabel"><label>Skills</label></div>
                 {_renderSkills(attributes, skills, updateSkillProficiency, proficiencyBonus)}
             </div>
         </div>

@@ -7,7 +7,7 @@ function App() {
   return (
     <div id="wrapper">
       <header>
-          <div class="logo">
+          <div className="logo">
             <img id="header" src={Logo} alt="logo" />
           </div>
       </header>

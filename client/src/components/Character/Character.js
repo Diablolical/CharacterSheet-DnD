@@ -3,8 +3,8 @@ import Features from './Features'
 
 function Character({ features }) {
     return (
-        <div class="col-third">
-            <div class="container">
+        <div className="col-third">
+            <div className="container">
                 <Personality
                     personality={features.personality}
                 />

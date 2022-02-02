@@ -122,7 +122,7 @@ function CharacterSheet({ characterId }) {
                 data={general}
                 update={updateGeneralInfo}
             />
-            <div class="wrapper wide">
+            <div className="wrapper wide">
                 <Stats
                     attributes={attributes}
                     skills={skills}

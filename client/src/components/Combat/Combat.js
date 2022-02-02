@@ -4,8 +4,8 @@ import Equipment from './Equipment'
 
 function Combat() {
     return (
-        <div class="col-third">
-            <div class="container">
+        <div className="col-third">
+            <div className="container">
                 <CombatStats></CombatStats>
                 <Attacks></Attacks>
                 <Equipment></Equipment>

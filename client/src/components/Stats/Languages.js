@@ -1,7 +1,7 @@
 function Languages () {
     return (
         <div id="languages">
-            <div class="block">
+            <div className="block">
                 <h3>Other Proficiencies & Languages</h3>
             </div>
         </div>

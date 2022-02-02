@@ -1,7 +1,7 @@
 function Attacks() {
     return (
         <div id="attacks">
-            <div class="block">
+            <div className="block">
                 <h3>Attacks</h3>
             </div>
         </div>
