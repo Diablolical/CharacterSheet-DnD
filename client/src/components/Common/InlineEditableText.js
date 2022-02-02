@@ -43,7 +43,7 @@ function InlineEditableText({ name, text, onChange }) {
     const renderStatic = () => {
         return (<div className="placeholder" onClick={() => toggle()}>{content}</div>)
     }
-    console.log("Editing= " + editing + " for block " + name)
+    
     return(
         editing ? renderInput() : renderStatic()
     )
