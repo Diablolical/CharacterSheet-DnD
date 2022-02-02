@@ -1,5 +1,5 @@
-import CombatStats from './CombatStats/CombatStats'
-import Attacks from './Attacks'
+import CombatStats from './Vitals/Vitals'
+import Attacks from './Attacks/Attacks'
 import Equipment from './Equipment'
 
 function Combat() {

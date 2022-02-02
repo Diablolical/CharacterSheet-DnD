@@ -194,6 +194,17 @@ label.large {
     height: 2em;
     font-size: 20px;
     display: block;
+    cursor: pointer;
+}
+
+.sectionLabel {
+    width: 100%;
+    font-weight: bold;
+    text-align: center;
+}
+
+.addButton {
+    cursor: pointer;
 }
 
 #fullwidth {
@@ -342,15 +353,12 @@ label.large {
     font-weight: bold;
 }
 
-.sectionLabel {
-    width: 100%;
-    text-align: center;
-    top: -.5em;
-    font-weight: bold;
-}
-
 #saves {
     width: 100%;
+}
+
+#saves .sectionLabel {
+    top: -.5em;
 }
 
 #skillsArea {
@@ -483,12 +491,6 @@ label.large {
     display: inline-block;
     font-size: 20px;
     height: 2em;
-}
-
-.personalityLabel {
-    width: 100%;
-    font-weight: bold;
-    text-align: center;
 }
 
 .spell-table-row {
