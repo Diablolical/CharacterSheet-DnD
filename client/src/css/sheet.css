@@ -189,6 +189,13 @@ label.large {
     pointer-events: none;
 }
 
+.placeholder {
+    width: 100%;
+    height: 2em;
+    font-size: 20px;
+    display: block;
+}
+
 #fullwidth {
     width: 100%;
 }
@@ -469,6 +476,13 @@ label.large {
 
 .personalityBlock textarea {
     width: 100%;
+    border: none;
+    padding: 0px;
+    background: transparent;
+    margin: 0;
+    display: inline-block;
+    font-size: 20px;
+    height: 2em;
 }
 
 .personalityLabel {

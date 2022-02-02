@@ -1,8 +1,10 @@
+import InlineEditableText from "../../Common/InlineEditableText"
+
 function PersonalityBlock ({ name, text, onChange }) {
     return (
-        <div className="personalityBlock">
+        <div className="block personalityBlock">
+            <InlineEditableText name={name} value={text} onChange={onChange}></InlineEditableText>
             <span className="personalityLabel"><label>{name.charAt(0).toUpperCase() + name.slice(1)}</label></span>
-            <textarea name={name} value={text} onChange={(e) => onChange(name, e.target.value)}></textarea>
         </div>
     )
 }
