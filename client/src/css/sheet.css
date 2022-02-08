@@ -30,9 +30,9 @@ select {
     border: 1px solid rgba(84,75,49,.7);
     font-family: Caudex,times,serif;
     font-size: 20px;
-    text-align: center;
     color: #222;
     margin: 0;
+    background: transparent;
 }
 
 input[readonly]
@@ -130,8 +130,10 @@ label.large {
     flex-wrap: wrap;
 }
 
-.wrapper.wide div.row {
+.row {
     display: inline-flex;
+    width: 100%;
+    align-items: center;
 }
 
 .wrapper.wide div.col-third {
@@ -203,8 +205,72 @@ label.large {
     text-align: center;
 }
 
+.weaponsTable {
+    width: 100%;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+}
+
+.weaponsTable .row {
+    flex-direction: row;
+    align-items: stretch;
+    margin: .3em 0em;
+}
+
+.weaponsTable .headerRow {
+    color:#A0A0A0;
+}
+
+.weaponsTable .row span {
+    width: 100%;
+}
+
+.weaponsTable .row span.attackMod, .weaponsTable .row span.edit {
+    width: 60%;
+    margin: 0 .5em;
+}
+
+.weaponsTable .row span.edit {
+    text-align: right;
+}
+
+.weaponsTable .row .damageSection {
+    display:flex;
+    flex-direction: column;
+}
+
 .addButton {
     cursor: pointer;
+    float:right;
+}
+
+.buttonRow {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+}
+
+.addWeapon {
+    background-image: url("../images/sword-icon.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 2em;
+    height: 2em;
+}
+
+.plusButton {
+    content: "&";
+    visibility: visible;
+    font-family: pictos;
+    background-color: #fff;
+    border: 1px solid black;
+    border-radius: 2px;
+    font-size: 12px;
+    height: 12px;
+    width: 12px;
+    padding: 2px 4px 2px 4px;
+    color: black;
 }
 
 #fullwidth {
@@ -466,6 +532,72 @@ label.large {
 
 .vitalsBlock .row.deathSaves input[type="checkbox"] {
     margin: 0 .3em;
+}
+
+.AddWeaponModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    max-width:100%;
+    background-color: white;
+    padding: 0em 1em 2em 1em;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+    transition: all .3s ease;
+    font-size: 16px;
+    line-height: 16px;
+}
+
+.ModalOverlay {
+    z-index: 99;
+}
+
+.AddWeaponModal .row {
+    margin-bottom: .2em;
+}
+
+.AddWeaponModal input {
+    height: auto;
+    font-size: inherit;
+    margin: 0em .5em;
+    display: flex;
+    flex-direction: row;
+    font-size:inherit;
+    line-height: inherit;
+    padding: .1em;
+}
+
+.AddWeaponModal select {
+    height: auto;
+    font-size: inherit;
+    margin: 0em .5em;
+    display: flex;
+    flex-direction: row;
+    font-size:inherit;
+    line-height: inherit;
+    padding: .1em;
+}
+
+.AddWeaponModal label {
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+    text-align: right;
+    font-size:inherit;
+    line-height: inherit;
+}
+
+.AddWeaponModal #modalClose, .AddWeaponModal .removeDamageType {
+    cursor: pointer;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.AddWeaponModal #modalClose {
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
 #personality {

@@ -4,7 +4,7 @@ import StatBlock from "./StatBlock"
 import HitDice from "./HitDice"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
 import DeathSaves from "./DeathSaves"
 
-function CombatStats() {
+function Vitals() {
     const [ac, updateAc] = useState(10)
     const [initiative, updateInitiative] = useState(0)
     const [speed, updateSpeed] = useState(30)
@@ -28,4 +28,4 @@ function CombatStats() {
     )
 }
 
-export default CombatStats
+export default Vitals

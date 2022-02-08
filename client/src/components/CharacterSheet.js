@@ -45,6 +45,12 @@ const defaultCharacterData = {
         { name: "stealth", isProficient: false },
         { name: "survival", isProficient: false },
     ],
+    combatStats: {
+
+    },
+    weapons: {
+
+    },
     features: {
         personality: [
             { "traits" : "" },
@@ -115,7 +121,7 @@ function CharacterSheet({ characterId }) {
     if (loading) {
         return (<Loading />)
     }
-
+    const proficiencyBonus = calcProficiencyBonus(general.level)
     return (
         <form name="character-sheet" id="sheet">
             <GeneralInfo
@@ -129,9 +135,12 @@ function CharacterSheet({ characterId }) {
                     updateAttributeScore={updateAttributeScore}
                     updateSaveProficiency={updateSaveProficiency}
                     updateSkillProficiency={updateSkillProficiency}
-                    proficiencyBonus={calcProficiencyBonus(general.level)}
+                    proficiencyBonus={proficiencyBonus}
                 />
-                <Combat />
+                <Combat 
+                    attributes={attributes}
+                    proficiencyBonus={proficiencyBonus}
+                />
                 <Character 
                     features={features}
                 />

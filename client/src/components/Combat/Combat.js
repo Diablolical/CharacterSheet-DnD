@@ -1,13 +1,16 @@
-import CombatStats from './Vitals/Vitals'
+import Vitals from './Vitals/Vitals'
 import Attacks from './Attacks/Attacks'
 import Equipment from './Equipment'
 
-function Combat() {
+function Combat({ attributes, proficiencyBonus }) {
     return (
         <div className="col-third">
             <div className="container">
-                <CombatStats></CombatStats>
-                <Attacks></Attacks>
+                <Vitals></Vitals>
+                <Attacks
+                    attributes={attributes}
+                    proficiencyBonus={proficiencyBonus}
+                />
                 <Equipment></Equipment>
             </div>
         </div>
