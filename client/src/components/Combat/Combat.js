@@ -2,7 +2,7 @@ import Vitals from './Vitals/Vitals'
 import Attacks from './Attacks/Attacks'
 import Equipment from './Equipment'
 
-function Combat({ attributes, proficiencyBonus }) {
+function Combat({ attributes, proficiencyBonus, attacks, updateAttacks }) {
     return (
         <div className="col-third">
             <div className="container">
@@ -10,6 +10,8 @@ function Combat({ attributes, proficiencyBonus }) {
                 <Attacks
                     attributes={attributes}
                     proficiencyBonus={proficiencyBonus}
+                    attacks={attacks}
+                    updateAttacks={updateAttacks}
                 />
                 <Equipment></Equipment>
             </div>

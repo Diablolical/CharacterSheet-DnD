@@ -48,9 +48,7 @@ const defaultCharacterData = {
     combatStats: {
 
     },
-    weapons: {
-
-    },
+    attacks: [],
     features: {
         personality: [
             { "traits" : "" },
@@ -70,6 +68,7 @@ function CharacterSheet({ characterId }) {
     const [general, updateGeneral] = useState(defaultCharacterData.general)
     const [attributes, updateAttributes] = useState(defaultCharacterData.attributes)
     const [skills, updateSkills] = useState(defaultCharacterData.skills)
+    const [attacks, updateAttacks] = useState(defaultCharacterData.attacks)
     const [features, updateFeatures] = useState(defaultCharacterData.features)
     const [loading, setLoading] = useState(false)
 
@@ -79,6 +78,7 @@ function CharacterSheet({ characterId }) {
             updateAttributes(data.attributes)
             updateSkills(data.skills)
             updateFeatures(data.features)
+            updateAttacks(data.attacks)
         }
         if (characterId) {
             getCharacterData(characterId, updateCharacter, setLoading)
@@ -140,6 +140,8 @@ function CharacterSheet({ characterId }) {
                 <Combat 
                     attributes={attributes}
                     proficiencyBonus={proficiencyBonus}
+                    attacks={attacks}
+                    updateAttacks={updateAttacks}
                 />
                 <Character 
                     features={features}

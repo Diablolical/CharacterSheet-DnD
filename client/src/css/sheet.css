@@ -247,7 +247,6 @@ label.large {
 
 .buttonRow {
     display: flex;
-    flex-direction: row-reverse;
     width: 100%;
 }
 
@@ -558,6 +557,10 @@ label.large {
     margin-bottom: .2em;
 }
 
+.AddWeaponModal button {
+    cursor: pointer;
+}
+
 .AddWeaponModal input {
     height: auto;
     font-size: inherit;
@@ -598,6 +601,14 @@ label.large {
     position: absolute;
     top: 10px;
     right: 10px;
+}
+
+.AddWeaponModal #modalSave {
+    margin:0 auto;
+}
+
+span.spacer {
+    width: 1.3em;
 }
 
 #personality {

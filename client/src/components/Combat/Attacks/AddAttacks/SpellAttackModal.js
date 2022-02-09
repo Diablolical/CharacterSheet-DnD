@@ -3,66 +3,82 @@ import Modal from 'react-modal'
 import clone from 'clone'
 import { calcMod } from '../../../Shared/helpers'
 import AttributeSelector from '../../../Common/AttributeSelector'
-import DamageType from './DamageType' 
+import DamageType from './DamageType'
 
-function WeaponModal({ isOpen, toggleClose, attributes, proficiencyBonus, weaponData, saveAttack }) {
-    const [weapon, updateWeapon] = useState(weaponData)
+function _renderAreaShapeOptions() {
+    const renderArray = []
+    const shapes = [
+        "cone",
+        "cube",
+        "line",
+        "cylinder",
+        "sphere"
+    ]
+    shapes.forEach((shape) => {
+        renderArray.push(<option key={shape} value={shape}>{shape.charAt(0).toUpperCase() + shape.slice(1)}</option>)
+    })
+    return renderArray
+}
+
+
+function SpellAttackModal({ isOpen, toggleClose, attributes, proficiencyBonus, spellData, saveAttack }) {
+    const [spellAttack, updateSpell] = useState(spellData)
     const [attrSelected, updateAttrSelected] = useState(attributes[0])
     
-    const bonus = useMemo(() => weapon.isProficient ? proficiencyBonus : 0, [weapon, proficiencyBonus])
     const abilityMod = useMemo(() => calcMod(attrSelected.score), [attrSelected])
 
     useEffect(() => {
-        updateWeapon(weaponData)
-        const attr = attributes.find((obj) => { return obj.name === weaponData.attribute})
+        updateSpell(spellData)
+        const attr = attributes.find((obj) => { return obj.name === spellData.attribute})
         updateAttrSelected(attr)
-    }, [attributes, weaponData])
+    }, [attributes, spellData])
 
     const handleAttrSelect = (name) => {
         const attr = attributes.find((obj) => { return obj.name === name})
         updateAttrSelected(attr)
-        updateWeaponProp("attribute", name)
+        updateProp("attribute", name)
     }
 
-    const updateWeaponProp = (prop, value) => {
-        const updated = clone(weapon)
+    const updateProp = (prop, value) => {
+        const updated = clone(spellAttack)
         updated[prop] = value
-        updateWeapon(updated)
+        updateSpell(updated)
     }
 
     const handleCloseWithoutSaving = () => {
-        updateWeapon(weaponData)
+        updateSpell(spellData)
         toggleClose()
     }
 
     const canRemove = () => {
-        return weapon.damage.length > 1
+        return spellAttack.damage.length > 1
     }
 
     const addDamageType = () => {
-        const damage = [...weapon.damage]
+        const damage = [...spellAttack.damage]
         damage.push({
             value: "",
-            isPrimary: false,
-            damageType: ""
+            addModifier: false,
+            damageType: "",
+            flatDamage: 0
         })
-        updateWeaponProp("damage", damage)
+        updateProp("damage", damage)
     }
 
     const removeDamageType = (index) => {
         if (canRemove() && index > 0) {
-            weapon.damage.splice(index,1)
-            const damage = weapon.damage
-            updateWeaponProp("damage", damage)
+            spellAttack.damage.splice(index,1)
+            const damage = spellAttack.damage
+            updateProp("damage", damage)
         }
     }
 
     const updateDamageType = (index, value) => {
-        const damage = [...weapon.damage]
+        const damage = [...spellAttack.damage]
         damage[index] = value
-        updateWeaponProp("damage", damage)
+        updateProp("damage", damage)
     }
-    const attackMod = abilityMod + bonus + weapon.magicBonus
+    const attackMod = abilityMod + proficiencyBonus;
     return(
         <Modal 
             isOpen={isOpen}
@@ -75,7 +91,7 @@ function WeaponModal({ isOpen, toggleClose, attributes, proficiencyBonus, weapon
                 }
             }}
         >
-            <h3>Add Weapon</h3>
+            <h3>Add Spell Attack</h3>
             <div className="options">
                 <div className="row">
                     <label>Name:</label>
@@ -83,57 +99,46 @@ function WeaponModal({ isOpen, toggleClose, attributes, proficiencyBonus, weapon
                         type="text"
                         className="mediumInput"
                         name="attackName"
-                        value={weapon.name}
-                        onChange={(e) => updateWeaponProp("name", e.target.value)}
+                        value={spellAttack.name}
+                        onChange={(e) => updateProp("name", e.target.value)}
                     />
                 </div>
                 <div className="row">
-                    <label>Attack:</label>
+                    <label>Casting Ability:</label>
                     <AttributeSelector
-                        name="attackAttr"
+                        name="spellcastingAttr"
                         attributes={attributes}
                         selected={attrSelected}
                         selectHandler={handleAttrSelect}
                     />
-                    <span> + </span>
-                    <span>{attackMod}</span>
-                    <input
-                        type="checkbox"
-                        name="attackProficient"
-                        checked={weapon.isProficient}
-                        onChange={() => updateWeaponProp("isProficient", !weapon.isProficient)}
-                    />
-                    <label>Proficient</label>
+                </div>
+                <div className="row">
+                    <label>Spell Attack Mod:</label>
+                    <input type="text" value={attackMod} name="spellAttackMod" readOnly="readonly" />
                 </div>
                 <div className="row">
                     <label>Range:</label>
-                    <input type="text" name="weaponRange" placeholder="80 / 360 feet" value={weapon.range} onChange={(e) => updateWeaponProp("range", e.target.value)}/>
+                    <input type="text" name="spellRange" placeholder="60 feet" value={spellAttack.range} onChange={(e) => updateProp("range", e.target.value)}/>
                 </div>
                 <div className="row">
-                    <label>Magic Bonus:</label>
+                    <label>Add Ability Mod to Damage?</label>
                     <input
-                        type="number"
-                        className="smallInput"
-                        name="magicBonus"
-                        placeholder="0"
-                        value={weapon.magicBonus}
-                        onChange={(e) => updateWeaponProp("magicBonus", parseInt(e.target.value))}
+                        type="checkbox"
+                        name="addModifier"
+                        checked={spellAttack.addModifier}
+                        onChange={() => updateProp("addModifier", !spellAttack.addModifier)}
                     />
-                </div>
-                <div className="row">
-                    <label>Crit Range:</label>
-                    <input type="text" className="smallInput" name="attr_atkcritrange" defaultValue="20" placeholder="20" />
                 </div>
                 <div className="damageType">
                     <div className="row">
                         <label>Damage:</label>
                     </div>
-                    {weapon.damage.map((damageType, i) => {
+                    {spellAttack.damage.map((damageType, i) => {
                         return <DamageType
                                     key={i}
                                     damage={damageType}
                                     abilityMod={abilityMod}
-                                    magicBonus={weapon.magicBonus}
+                                    magicBonus={0}
                                     updateDamage={(value) => updateDamageType(i, value)}
                                     remove={() => removeDamageType(i)}
                                 />
@@ -145,11 +150,11 @@ function WeaponModal({ isOpen, toggleClose, attributes, proficiencyBonus, weapon
                 </div>
             </div>
             <div className="row saveRow">
-                <button id="modalSave" onClick={(e) => { e.preventDefault(); saveAttack(weapon); }}>Save</button>
+                <button id="modalSave" onClick={(e) => { e.preventDefault(); saveAttack(spellAttack); }}>Save</button>
             </div>
             <div id="modalClose" title="Close without saving" onClick={handleCloseWithoutSaving}>X</div>
         </Modal>
     )
 }
 
-export default WeaponModal
+export default SpellAttackModal
