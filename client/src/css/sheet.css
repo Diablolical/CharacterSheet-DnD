@@ -1,359 +1,360 @@
 h1 {
-    font-size: 30px;
-    line-height: 40px;
-    text-align: center;
-    margin: 0 10px 10px 0;
-    font-weight: 700;
-    padding-left: 28px;
+  font-size: 30px;
+  line-height: 40px;
+  text-align: center;
+  margin: 0 10px 10px 0;
+  font-weight: 700;
+  padding-left: 28px;
 }
 
 header {
-    text-align: center;
+  text-align: center;
 }
 
-header .logo img{
-    width:90%;
+header .logo img {
+  width: 90%;
 }
 
-input:not([type=checkbox]) {
-    height: 28px;
-    padding: 5px;
-    border: 1px solid rgba(84,75,49,.7);
-    font-size: 20px;
-    color: #222;
-    margin: 0;
+input:not([type="checkbox"]) {
+  height: 28px;
+  padding: 5px;
+  border: 1px solid rgba(84, 75, 49, 0.7);
+  font-size: 20px;
+  color: #222;
+  margin: 0;
 }
 
 select {
-    height: 40px;
-    padding: 5px;
-    border: 1px solid rgba(84,75,49,.7);
-    font-family: Caudex,times,serif;
-    font-size: 20px;
-    color: #222;
-    margin: 0;
-    background: transparent;
+  height: 40px;
+  padding: 5px;
+  border: 1px solid rgba(84, 75, 49, 0.7);
+  font-family: Caudex, times, serif;
+  font-size: 20px;
+  color: #222;
+  margin: 0;
+  background: transparent;
 }
 
-input[readonly]
-{
-    background-color:#bbb;
-    color: #303;
+input[readonly] {
+  background-color: #bbb;
+  color: #303;
 }
 
 textarea {
-    width: 24em;
-    height: 3em;
-    border: 1px solid rgba(84,75,49,.7);
-    font-family: Caudex,times,serif;
-    font-size: 20px;
-    color: #222;
-    margin: 0;
+  width: 24em;
+  height: 3em;
+  border: 1px solid rgba(84, 75, 49, 0.7);
+  font-family: Caudex, times, serif;
+  font-size: 20px;
+  color: #222;
+  margin: 0;
 }
 
 label {
-    display: block;
-    font-size: 16px;
-    line-height: 20px;
-    height: 20px;
-    text-align: center;
-    margin: 0;
-    cursor: default;
+  display: block;
+  font-size: 16px;
+  line-height: 20px;
+  height: 20px;
+  text-align: center;
+  margin: 0;
+  cursor: default;
 }
 
 label.large {
-    font-size: 20px;
-    font-family: Caudex,times,serif;
-    text-align: center;
-    padding:4px;
+  font-size: 20px;
+  font-family: Caudex, times, serif;
+  text-align: center;
+  padding: 4px;
 }
 
 #wrapper {
-    float: none;
-    width: 1200px;
-    margin: 0 auto;
-    padding: 20px 20px 65px 20px;
-    box-shadow: 0 0 30px rgba(84,75,49,.7);
+  float: none;
+  width: 1200px;
+  margin: 0 auto;
+  padding: 20px 20px 65px 20px;
+  box-shadow: 0 0 30px rgba(84, 75, 49, 0.7);
 }
 
 .logo {
-    margin-top: 30px;
-    margin-bottom: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .block {
-    background-color: rgb(255, 255, 255);
-    color: rgba(0, 0, 0, 0.87);
-    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    border-radius: 4px;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    padding: 6px;
-    box-sizing: border-box;
-    display: flex;
-    flex-flow: row wrap;
-    width: 100%;
-    -webkit-box-pack: justify;
-    justify-content: space-between;
-    -webkit-box-align: center;
-    align-items: center;
-    row-gap: 8px;
-    margin: 0em .5em 1em .5em;
+  background-color: rgb(255, 255, 255);
+  color: rgba(0, 0, 0, 0.87);
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 6px;
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  align-items: center;
+  row-gap: 8px;
+  margin: 0em 0.5em 1em 0.5em;
 }
 
 .bigInput {
-    width: 20em;
+  width: 20em;
 }
 
 .smallInput {
-    width: 7em;
+  width: 7em;
 }
 
 .smallInput .numericInput {
-    padding: 5px 0px;
-    width: 100%;
-    text-align: center;
+  padding: 5px 0px;
+  width: 100%;
+  text-align: center;
 }
 
 .mediumInput {
-    width: 12em;
+  width: 12em;
 }
 
 .container {
-    width: 100%;
-    float: left;
-    margin: 0px 20px;
+  width: 100%;
+  float: left;
+  margin: 0px 20px;
 }
 
 .wrapper.wide {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .row {
-    display: inline-flex;
-    width: 100%;
-    align-items: center;
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
 }
 
 .wrapper.wide div.col-third {
-     width:33%;
-     flex-wrap: wrap;
-     display: flex;
-     -ms-flex-direction: row;
-     flex-direction: row;
+  width: 33%;
+  flex-wrap: wrap;
+  display: flex;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 .wrapper.wide div.col-two-third {
-    width:66%;
-    flex-wrap:wrap;
+  width: 66%;
+  flex-wrap: wrap;
 }
 
 .row#characterName {
-    align-items: center;
-    justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .row#characterName input {
-    font-size: 28px;
-    height: 42px;
-    width: auto;
+  font-size: 28px;
+  height: 42px;
+  width: auto;
 }
 
 .formInput {
-    display: block;
-    box-sizing: border-box;
-    position: relative;
+  display: block;
+  box-sizing: border-box;
+  position: relative;
 }
 
 .formInput input:focus + label {
-    top: 0;
-    transform: translateY(-50%) scale(.9);
+  top: 0;
+  transform: translateY(-50%) scale(0.9);
 }
 
 .formInput input:not(:placeholder-shown) + label {
-    top: 0;
-    transform: translateY(-50%) scale(.9);
+  top: 0;
+  transform: translateY(-50%) scale(0.9);
 }
 
 .formInput label {
-    position: absolute;
-    font-size: 1rem;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: white;
-    color: rgba(0, 0, 0, 0.67);
-    padding: 0 0.3rem;
-    margin: 0 0.5rem;
-    transition: .1s ease-out;
-    transform-origin: left top;
-    pointer-events: none;
+  position: absolute;
+  font-size: 1rem;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: white;
+  color: rgba(0, 0, 0, 0.67);
+  padding: 0 0.3rem;
+  margin: 0 0.5rem;
+  transition: 0.1s ease-out;
+  transform-origin: left top;
+  pointer-events: none;
 }
 
 .placeholder {
-    width: 100%;
-    height: 2em;
-    font-size: 20px;
-    display: block;
-    cursor: pointer;
+  width: 100%;
+  height: 2em;
+  font-size: 20px;
+  display: block;
+  cursor: pointer;
 }
 
 .sectionLabel {
-    width: 100%;
-    font-weight: bold;
-    text-align: center;
+  width: 100%;
+  font-weight: bold;
+  text-align: center;
 }
 
 .weaponsTable {
-    width: 100%;
-    font-size: 14px;
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
 }
 
 .weaponsTable .row {
-    flex-direction: row;
-    align-items: stretch;
-    margin: .3em 0em;
+  flex-direction: row;
+  align-items: stretch;
+  margin: 0.3em 0em;
 }
 
 .weaponsTable .headerRow {
-    color:#A0A0A0;
+  color: #a0a0a0;
 }
 
 .weaponsTable .row span {
-    width: 100%;
+  width: 100%;
 }
 
-.weaponsTable .row span.attackMod, .weaponsTable .row span.edit {
-    width: 60%;
-    margin: 0 .5em;
+.weaponsTable .row span.attackMod,
+.weaponsTable .row span.edit {
+  width: 60%;
+  margin: 0 0.5em;
 }
 
 .weaponsTable .row span.edit {
-    text-align: right;
+  text-align: right;
 }
 
 .weaponsTable .row .damageSection {
-    display:flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .addButton {
-    cursor: pointer;
-    float:right;
+  cursor: pointer;
+  float: right;
 }
 
 .buttonRow {
-    display: flex;
-    flex-direction: row-reverse;
-    width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
 }
 
 .addWeapon {
-    background-image: url("../images/sword-icon.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 2em;
-    height: 2em;
+  background-image: url("../images/sword-icon.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 2em;
+  height: 2em;
 }
 
 .plusButton {
-    content: "&";
-    visibility: visible;
-    font-family: pictos;
-    background-color: #fff;
-    border: 1px solid black;
-    border-radius: 2px;
-    font-size: 12px;
-    height: 12px;
-    width: 12px;
-    padding: 2px 4px 2px 4px;
-    color: black;
+  content: "&";
+  visibility: visible;
+  font-family: pictos;
+  background-color: #fff;
+  border: 1px solid black;
+  border-radius: 2px;
+  font-size: 12px;
+  height: 12px;
+  width: 12px;
+  padding: 2px 4px 2px 4px;
+  color: black;
 }
 
 #fullwidth {
-    width: 100%;
+  width: 100%;
 }
 
 #general {
-    margin-bottom: 3em;
+  margin-bottom: 3em;
 }
 
 #general .general {
-    margin: 0em 4em;
+  margin: 0em 4em;
 }
 
 #general .formInput {
-    margin-right: 1em;
-    margin-bottom: 1em;
+  margin-right: 1em;
+  margin-bottom: 1em;
 }
 
 #general .formInput .textInput {
-    width: 12em;
+  width: 12em;
 }
 
 #attributes {
-    max-width: 100px;
-    float: left;
-    margin: 0px 10px;
-    overflow: hidden;
+  max-width: 100px;
+  float: left;
+  margin: 0px 10px;
+  overflow: hidden;
 }
 
 .attributeContainer {
-    width: 70px;
-    border: 1px solid #666;
-    border-radius: 5px;
-    position: relative;
-    padding-bottom: 10px;
-    margin-bottom: 19px;
-    height: 64px;
-    text-align: center;
+  width: 70px;
+  border: 1px solid #666;
+  border-radius: 5px;
+  position: relative;
+  padding-bottom: 10px;
+  margin-bottom: 19px;
+  height: 64px;
+  text-align: center;
 }
 
 .attrLabel {
-    font-size: 12px;
-    width: 100%;
-    border: none;
-    color: black;
-    background-color: transparent;
-    font-weight: bold;
+  font-size: 12px;
+  width: 100%;
+  border: none;
+  color: black;
+  background-color: transparent;
+  font-weight: bold;
 }
 
 .attrMod {
-    font-size: 35px;
-    font-weight: bold;
-    position: relative;
-    top: -5px;
+  font-size: 35px;
+  font-weight: bold;
+  position: relative;
+  top: -5px;
 }
 
 .attrScore {
-    width: 40px;
-    height: 20px;
-    border: 1px solid #666;
-    border-radius: 50%;
-    z-index: 2;
-    position: absolute;
-    top: 62px;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: white;
+  width: 40px;
+  height: 20px;
+  border: 1px solid #666;
+  border-radius: 50%;
+  z-index: 2;
+  position: absolute;
+  top: 62px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
 }
 
-.attrScore .attrInput, #combatStats .attrInput {
-    font-size: 18px;
-    height: 100%;
-    width: 100%;
-    border: none;
-    padding: 0px;
-    background: transparent;
-    text-align: center;
-    -webkit-appearance: none;
-    margin: 0;
-    -moz-appearance: textfield;
+.attrScore .attrInput,
+#combatStats .attrInput {
+  font-size: 18px;
+  height: 100%;
+  width: 100%;
+  border: none;
+  padding: 0px;
+  background: transparent;
+  text-align: center;
+  -webkit-appearance: none;
+  margin: 0;
+  -moz-appearance: textfield;
 }
 
 .attrScore input::-webkit-outer-spin-button,
@@ -363,315 +364,316 @@ label.large {
 }
 
 .insp-prof-container {
-    height: 40px;
-    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    border-radius: 4px;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    margin: 0em .5em 1em .5em;
-    width: 100%;
-    display: flex;
+  height: 40px;
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  margin: 0em 0.5em 1em 0.5em;
+  width: 100%;
+  display: flex;
 }
 
 .insp-prof-container .value {
-    display: inline-block;
-    border: 1px solid #666;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    position: relative;
+  display: inline-block;
+  border: 1px solid #666;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  position: relative;
 }
 
 .insp-prof-container .value span {
-    font-size: 24px;
-    font-weight: normal;
-    line-height: 38px;
-    width: 100%;
-    text-align: center;
-    margin-left: 8px;
+  font-size: 24px;
+  font-weight: normal;
+  line-height: 38px;
+  width: 100%;
+  text-align: center;
+  margin-left: 8px;
 }
 
 .insp-prof-container .value .inspiration {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    text-align: center;
-    font-size: 20px;
-    border: none;
-    background: none;
-    box-shadow: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -webkit-border-radius: 0px;
-    border-radius: 0px;
-    color: black;
-    margin:0px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  text-align: center;
+  font-size: 20px;
+  border: none;
+  background: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  color: black;
+  margin: 0px;
 }
 
 .insp-prof-container .label {
-    margin-left: 10px;
-    margin-top: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
 }
 .insp-prof-container .label span {
-    font-size: 20px;
-    width: 100%;
-    text-align: center;
-    line-height: 20px;
-    font-weight: bold;
+  font-size: 20px;
+  width: 100%;
+  text-align: center;
+  line-height: 20px;
+  font-weight: bold;
 }
 
 #saves {
-    width: 100%;
+  width: 100%;
 }
 
 #saves .sectionLabel {
-    top: -.5em;
+  top: -0.5em;
 }
 
 #skillsArea {
-    max-width: 250px;
-    float: left;
-    margin-left: 10px;
+  max-width: 250px;
+  float: left;
+  margin-left: 10px;
 }
 
 .skillRow {
-    width: 100%;
+  width: 100%;
 }
 
 .skillRow label.skillName {
-    display: inline;
-    line-height: 1em;
-    text-align: left;
-    padding: .5em;
+  display: inline;
+  line-height: 1em;
+  text-align: left;
+  padding: 0.5em;
 }
 
 #vitals {
-    display:flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 #combatStats {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 #hit-dice-death-saves {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .block.combatStats {
-    margin-bottom: .5em;
-    padding: 1em 2em;
+  margin-bottom: 0.5em;
+  padding: 1em 2em;
 }
 
 .block.combatStats .attributeContainer {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .vitalsBlock {
-    width:100%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 .vitalsBlock.block {
-    margin-bottom: .5em;
-    max-width: fit-content;
+  margin-bottom: 0.5em;
+  max-width: fit-content;
 }
 
 .vitalsBlock .top {
-    font-size: 14px;
-    line-height: 14px;
+  font-size: 14px;
+  line-height: 14px;
 }
 
 .vitalsBlock .top span {
-    display: inline-block;
-    margin-right: 1em;
-    color: #A0A0A0;
-    font-size: 12px;
+  display: inline-block;
+  margin-right: 1em;
+  color: #a0a0a0;
+  font-size: 12px;
 }
 
 .vitalsBlock input {
-    border: none;
-    padding: 0px;
-    background: transparent;
-    margin: 0;
-    display: inline-block;
-    text-align: center;
+  border: none;
+  padding: 0px;
+  background: transparent;
+  margin: 0;
+  display: inline-block;
+  text-align: center;
 }
 
 .vitalsBlock .top input {
-    height: 100%;
-    border-bottom: 1px solid #D3D3D3;
-    -webkit-appearance: none;
-    -moz-appearance: textfield;
-    font-size: inherit;
+  height: 100%;
+  border-bottom: 1px solid #d3d3d3;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  font-size: inherit;
 }
 
 .vitalsBlock input.hp-input {
-    width: 100%;
-    font-size: 35px;
+  width: 100%;
+  font-size: 35px;
 }
 
 .vitalsBlock span.label {
-    font-size: 12px;
+  font-size: 12px;
 }
 
 .vitalsBlock input.hit-dice-total {
-    width: 3em;
+  width: 3em;
 }
 
 .vitalsBlock input.hit-dice-input {
-    width: 100%;
+  width: 100%;
 }
 
 .vitalsBlock .row.deathSaves label {
-    width: 5em;
-    text-align: left;
+  width: 5em;
+  text-align: left;
 }
 
 .vitalsBlock .row.deathSaves input[type="checkbox"] {
-    margin: 0 .3em;
+  margin: 0 0.3em;
 }
 
 .AddWeaponModal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 500px;
-    max-width:100%;
-    background-color: white;
-    padding: 0em 1em 2em 1em;
-    border-radius: 2px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
-    transition: all .3s ease;
-    font-size: 16px;
-    line-height: 16px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  max-width: 100%;
+  background-color: white;
+  padding: 0em 1em 2em 1em;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+  transition: all 0.3s ease;
+  font-size: 16px;
+  line-height: 16px;
 }
 
 .ModalOverlay {
-    z-index: 99;
+  z-index: 99;
 }
 
 .AddWeaponModal .row {
-    margin-bottom: .2em;
+  margin-bottom: 0.2em;
 }
 
 .AddWeaponModal input {
-    height: auto;
-    font-size: inherit;
-    margin: 0em .5em;
-    display: flex;
-    flex-direction: row;
-    font-size:inherit;
-    line-height: inherit;
-    padding: .1em;
+  height: auto;
+  font-size: inherit;
+  margin: 0em 0.5em;
+  display: flex;
+  flex-direction: row;
+  font-size: inherit;
+  line-height: inherit;
+  padding: 0.1em;
 }
 
 .AddWeaponModal select {
-    height: auto;
-    font-size: inherit;
-    margin: 0em .5em;
-    display: flex;
-    flex-direction: row;
-    font-size:inherit;
-    line-height: inherit;
-    padding: .1em;
+  height: auto;
+  font-size: inherit;
+  margin: 0em 0.5em;
+  display: flex;
+  flex-direction: row;
+  font-size: inherit;
+  line-height: inherit;
+  padding: 0.1em;
 }
 
 .AddWeaponModal label {
-    width: 20%;
-    display: flex;
-    flex-direction: row;
-    text-align: right;
-    font-size:inherit;
-    line-height: inherit;
+  width: 20%;
+  display: flex;
+  flex-direction: row;
+  text-align: right;
+  font-size: inherit;
+  line-height: inherit;
 }
 
-.AddWeaponModal #modalClose, .AddWeaponModal .removeDamageType {
-    cursor: pointer;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+.AddWeaponModal #modalClose,
+.AddWeaponModal .removeDamageType {
+  cursor: pointer;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .AddWeaponModal #modalClose {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
 #personality {
-    margin-bottom: 2em;
+  margin-bottom: 2em;
 }
 
 .personalityBlock {
-    width: 100%;
-    box-sizing: border-box;
-    display: flex;
-    flex-flow: row wrap;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .personalityBlock textarea {
-    width: 100%;
-    border: none;
-    padding: 0px;
-    background: transparent;
-    margin: 0;
-    display: inline-block;
-    font-size: 20px;
-    height: 2em;
+  width: 100%;
+  border: none;
+  padding: 0px;
+  background: transparent;
+  margin: 0;
+  display: inline-block;
+  font-size: 20px;
+  height: 2em;
 }
 
 .spell-table-row {
-    width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 .spell-table-row label.large {
-    width: 4em;
+  width: 4em;
 }
 
 .spell-table-row .placeholder {
-    font-size: 20px;
-    width: 12em;
-    text-align: center;
+  font-size: 20px;
+  width: 12em;
+  text-align: center;
 }
 
- #spell-table-header .header-label {
-    width: 12em;
-    text-align: center;
-    font-size: 20px;
- }
+#spell-table-header .header-label {
+  width: 12em;
+  text-align: center;
+  font-size: 20px;
+}
 
- .header-label label {
-    font-size: 20px;
-    font-family: Caudexs,times,serif;
-    text-align: center;
- }
+.header-label label {
+  font-size: 20px;
+  font-family: Caudexs, times, serif;
+  text-align: center;
+}
 
- .footer {
-    width: 100%;
-    text-align: center;
- }
+.footer {
+  width: 100%;
+  text-align: center;
+}
 
- .footer #save {
-    font-size: 20px;
-    font-family: Caudexs,times,serif;
-    text-align: center;
-    padding: .5em 1em;
- }
+.footer #save {
+  font-size: 20px;
+  font-family: Caudexs, times, serif;
+  text-align: center;
+  padding: 0.5em 1em;
+}
 
 .modal-container {
-    width: 500px;
-    margin: 0px auto;
-    padding: 20px 30px;
-    border-radius: 2px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
-    transition: all .3s ease;
-    font-family: Helvetica, Arial, sans-serif;
+  width: 500px;
+  margin: 0px auto;
+  padding: 20px 30px;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+  transition: all 0.3s ease;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 .modal-mask {
@@ -681,9 +683,9 @@ label.large {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, 0.5);
   display: table;
-  transition: opacity .3s ease;
+  transition: opacity 0.3s ease;
 }
 
 .modal-wrapper {
