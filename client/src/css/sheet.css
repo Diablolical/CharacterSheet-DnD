@@ -30,7 +30,7 @@ select {
     border: 1px solid rgba(84,75,49,.7);
     font-family: Caudex,times,serif;
     font-size: 20px;
-    color: #222;
+    /*color: #222; */
     margin: 0;
     background: transparent;
 }
@@ -66,6 +66,39 @@ label.large {
     font-family: Caudex,times,serif;
     text-align: center;
     padding:4px;
+}
+
+.flatButton {
+    cursor: pointer;
+    display: inline-flex;
+    -moz-box-align: center;
+    align-items: center;
+    -moz-box-pack: center;
+    justify-content: center;
+    position: relative;
+    box-sizing: border-box;
+    background-color: transparent;
+    outline: currentcolor none 0px;
+    margin: 0px;
+    cursor: pointer;
+    user-select: none;
+    vertical-align: middle;
+    appearance: none;
+    text-decoration: none;
+    font-size: 0.875rem;
+    letter-spacing: 0.02857em;
+    text-transform: uppercase;
+    padding: 5px 15px;
+    border-radius: 4px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    color: rgb(0, 0, 0);
+}
+
+.flatButton:hover {
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.08);
+    border: 1px solid rgb(0, 0, 0);
 }
 
 #wrapper {
@@ -203,73 +236,6 @@ label.large {
     width: 100%;
     font-weight: bold;
     text-align: center;
-}
-
-.weaponsTable {
-    width: 100%;
-    font-size: 14px;
-    display: flex;
-    flex-direction: column;
-}
-
-.weaponsTable .row {
-    flex-direction: row;
-    align-items: stretch;
-    margin: .3em 0em;
-}
-
-.weaponsTable .headerRow {
-    color:#A0A0A0;
-}
-
-.weaponsTable .row span {
-    width: 100%;
-}
-
-.weaponsTable .row span.attackMod, .weaponsTable .row span.edit {
-    width: 60%;
-    margin: 0 .5em;
-}
-
-.weaponsTable .row span.edit {
-    text-align: right;
-}
-
-.weaponsTable .row .damageSection {
-    display:flex;
-    flex-direction: column;
-}
-
-.addButton {
-    cursor: pointer;
-    float:right;
-}
-
-.buttonRow {
-    display: flex;
-    width: 100%;
-}
-
-.addWeapon {
-    background-image: url("../images/sword-icon.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 2em;
-    height: 2em;
-}
-
-.plusButton {
-    content: "&";
-    visibility: visible;
-    font-family: pictos;
-    background-color: #fff;
-    border: 1px solid black;
-    border-radius: 2px;
-    font-size: 12px;
-    height: 12px;
-    width: 12px;
-    padding: 2px 4px 2px 4px;
-    color: black;
 }
 
 #fullwidth {
@@ -533,7 +499,72 @@ label.large {
     margin: 0 .3em;
 }
 
-.AddWeaponModal {
+.weaponsTable {
+    width: 100%;
+    font-size: 14px;
+    table-layout: fixed;
+}
+
+.weaponsTable .headerRow {
+    color:#A0A0A0;
+}
+
+.weaponsTable .attackCol {
+    width:35%;
+}
+
+.weaponsTable .attackCol.attackMod {
+    width: 20%;
+}
+
+.weaponsTable .attackCol.edit {
+    width: 10%;
+}
+
+.weaponsTable .damageSection {
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+.addButton {
+    cursor: pointer;
+    float:right;
+    background-color: white;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    color: rgb(0, 0, 0);
+}
+
+.addButton:hover {
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+.buttonRow {
+    display: flex;
+    width: 100%;
+    margin-top: 1em;
+}
+
+.addWeapon {
+    background-image: url("../images/sword-icon.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 2em;
+    height: 2em;
+    margin:0 .2em;
+}
+
+.addSpell {
+    background-image: url("../images/flame-128.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 2em;
+    height: 2em;
+    margin: 0 .2em;
+}
+
+.AddAttackModal {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -541,7 +572,7 @@ label.large {
     width: 500px;
     max-width:100%;
     background-color: white;
-    padding: 0em 1em 2em 1em;
+    padding: 0em 1em 1em 1em;
     border-radius: 2px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
     transition: all .3s ease;
@@ -553,15 +584,29 @@ label.large {
     z-index: 99;
 }
 
-.AddWeaponModal .row {
+.AddAttackModal .row {
     margin-bottom: .2em;
 }
 
-.AddWeaponModal button {
-    cursor: pointer;
+.plusButton {
+    background-color: #fff;
+    border-radius: 2px;
+    font-size: inherit;
+    padding: .1rem .3rem .1rem .3rem;
+    color: black;
 }
 
-.AddWeaponModal input {
+.editButton {
+    padding: 2px;
+    border: 1px solid rgb(255,255,255)
+}
+
+.editButton img {
+    width: 1em;
+    height: 1em;
+}
+
+.AddAttackModal input {
     height: auto;
     font-size: inherit;
     margin: 0em .5em;
@@ -572,7 +617,11 @@ label.large {
     padding: .1em;
 }
 
-.AddWeaponModal select {
+.AddAttackModal input[type="checkbox"] {
+    margin-left:.1em;
+}
+
+.AddAttackModal select {
     height: auto;
     font-size: inherit;
     margin: 0em .5em;
@@ -583,32 +632,40 @@ label.large {
     padding: .1em;
 }
 
-.AddWeaponModal label {
+.AddAttackModal label {
     width: 20%;
     display: flex;
     flex-direction: row;
-    text-align: right;
+    text-align: left;
     font-size:inherit;
     line-height: inherit;
 }
 
-.AddWeaponModal #modalClose, .AddWeaponModal .removeDamageType {
+.AddAttackModal span.spacer {
+    width: 1.3em;
+}
+
+.AddAttackModal #modalClose, .AddAttackModal .removeDamageType {
     cursor: pointer;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.AddWeaponModal #modalClose {
+.AddAttackModal #modalClose {
     position: absolute;
     top: 10px;
     right: 10px;
 }
 
-.AddWeaponModal #modalSave {
+.AddAttackModal #modalSave {
     margin:0 auto;
 }
 
-span.spacer {
-    width: 1.3em;
+.AddAttackModal.AddSpell .row label {
+    width: 35%;
+}
+
+.AddAttackModal.AddSpell span.spacer {
+    width: 0;
 }
 
 #personality {

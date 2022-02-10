@@ -8,7 +8,7 @@ import DamageType from './DamageType'
 function WeaponModal({ isOpen, toggleClose, attributes, proficiencyBonus, weaponData, saveAttack }) {
     const [weapon, updateWeapon] = useState(weaponData)
     const [attrSelected, updateAttrSelected] = useState(attributes[0])
-    
+
     const bonus = useMemo(() => weapon.isProficient ? proficiencyBonus : 0, [weapon, proficiencyBonus])
     const abilityMod = useMemo(() => calcMod(attrSelected.score), [attrSelected])
 
@@ -67,7 +67,7 @@ function WeaponModal({ isOpen, toggleClose, attributes, proficiencyBonus, weapon
         <Modal 
             isOpen={isOpen}
             onRequestClose={toggleClose}
-            className="AddWeaponModal"
+            className="AddAttackModal AddWeapon"
             appElement={document.getElementById('root')}
             style={{
                 overlay: {
@@ -131,6 +131,7 @@ function WeaponModal({ isOpen, toggleClose, attributes, proficiencyBonus, weapon
                     {weapon.damage.map((damageType, i) => {
                         return <DamageType
                                     key={i}
+                                    index={i}
                                     damage={damageType}
                                     abilityMod={abilityMod}
                                     magicBonus={weapon.magicBonus}
@@ -141,11 +142,11 @@ function WeaponModal({ isOpen, toggleClose, attributes, proficiencyBonus, weapon
                     }
                 </div>
                 <div className="row">
-                    <button title="Add damage type" onClick={(e) => { e.preventDefault(); addDamageType(); }}>+</button>
+                    <button title="Add damage type" class="flatButton plusButton" onClick={(e) => { e.preventDefault(); addDamageType(); }}>+</button>
                 </div>
             </div>
             <div className="row saveRow">
-                <button id="modalSave" onClick={(e) => { e.preventDefault(); saveAttack(weapon); }}>Save</button>
+                <button id="modalSave" class="flatButton" onClick={(e) => { e.preventDefault(); saveAttack(weapon); }}>Save</button>
             </div>
             <div id="modalClose" title="Close without saving" onClick={handleCloseWithoutSaving}>X</div>
         </Modal>

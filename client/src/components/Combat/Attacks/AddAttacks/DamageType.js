@@ -1,6 +1,6 @@
 import clone from 'clone'
 
-function DamageType ({ damage, abilityMod, magicBonus, updateDamage, remove }) {
+function DamageType ({ index, damage, abilityMod, magicBonus, updateDamage, remove }) {
 
     const update = (name, value) => {
         const updated = clone(damage)
@@ -24,13 +24,13 @@ function DamageType ({ damage, abilityMod, magicBonus, updateDamage, remove }) {
                     value={damage.damage}
                     onChange={(e) => update('damage', e.target.value)} 
                 />
-                {damage.isPrimary && 
+                {(damage?.isPrimary || damage?.addModifier) && 
                     <><span>+&nbsp;</span><span>{damageMod}</span></>
                 }
-                {!damage.isPrimary &&
+                {!damage?.isPrimary &&
                     <><span className="spacer"></span></>}
                 <input type="text" name="damageType" placeholder="Slashing" value={damage.damageType} onChange={(e) => update('damageType', e.target.value)}/>
-                {!damage.isPrimary && 
+                {index > 0 && 
                     <><div className="removeDamageType" title="Delete" onClick={remove}>X</div></>
                 }
             </div>

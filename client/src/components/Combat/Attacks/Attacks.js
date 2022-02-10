@@ -42,33 +42,44 @@ const defaultSpellAttack = {
 
 function _renderAttackRows(attacks, editWeapon, editSpell, attributes, proficiencyBonus) {
     return(
-        <div className="weaponsTable">
-            <div className="row headerRow"><span>Name</span><span className="attackMod">Attack +/-</span><span>Damage</span><span className="edit">Edit</span></div>
-            {attacks.map((attack, i) => {
-                switch (attack.type) {
-                    case 'weapon':
-                        return <WeaponRow
-                            key={i}
-                            index={i}
-                            weapon={attack}
-                            editCallback={editWeapon}
-                            attributes={attributes}
-                            proficiencyBonus={proficiencyBonus}
-                        />
-                    case 'spellAttack':
-                        return <SpellAttackRow
-                            key={i}
-                            index={i}
-                            spell={attack}
-                            editCallback={editSpell}
-                            attributes={attributes}
-                            proficiencyBonus={proficiencyBonus}
-                        />
-                    default:
-                            return ""
-                }
-            })}
-        </div>
+        <table className="weaponsTable">
+            <col className='attackCol'></col>
+            <col className="attackCol attackMod"></col>
+            <col className='attackCol'></col>
+            <col className="attackCol edit"></col>
+            <thead>
+                <tr className="headerRow">
+                    <th className="attackCol">Name</th>
+                    <th className="attackCol attackMod">Attack +/-</th>
+                    <th className="attackCol">Damage</th>
+                    <th className="attackCol edit">Edit</th>
+                </tr>
+            </thead>
+                {attacks.map((attack, i) => {
+                    switch (attack.type) {
+                        case 'weapon':
+                            return <WeaponRow
+                                key={i}
+                                index={i}
+                                weapon={attack}
+                                editCallback={editWeapon}
+                                attributes={attributes}
+                                proficiencyBonus={proficiencyBonus}
+                            />
+                        case 'spellAttack':
+                            return <SpellAttackRow
+                                key={i}
+                                index={i}
+                                spell={attack}
+                                editCallback={editSpell}
+                                attributes={attributes}
+                                proficiencyBonus={proficiencyBonus}
+                            />
+                        default:
+                                return ""
+                    }
+                })}
+        </table>
     )
 }
 
@@ -123,7 +134,7 @@ function Attacks({ attributes, proficiencyBonus, attacks, updateAttacks }) {
                 {attacks.length > 0 && _renderAttackRows(attacks, editWeapon, editSpell, attributes, proficiencyBonus)}
                 <div className="buttonRow">
                     <button title="Add Weapon" className="addButton addWeapon" onClick={(e) => { e.preventDefault(); addWeapon(); }}></button>
-                    <button title="Add Spell Attack" className="addButton" onClick={(e) => { e.preventDefault(); addSpell(); }}>+</button>
+                    <button title="Add Spell Attack" className="addButton addSpell" onClick={(e) => { e.preventDefault(); addSpell(); }}>+</button>
                 </div>
             </div>
             <WeaponModal

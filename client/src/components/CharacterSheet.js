@@ -45,7 +45,7 @@ const defaultCharacterData = {
         { name: "stealth", isProficient: false },
         { name: "survival", isProficient: false },
     ],
-    combatStats: {
+    vitals: {
 
     },
     attacks: [],

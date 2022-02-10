@@ -5,22 +5,6 @@ import { calcMod } from '../../../Shared/helpers'
 import AttributeSelector from '../../../Common/AttributeSelector'
 import DamageType from './DamageType'
 
-function _renderAreaShapeOptions() {
-    const renderArray = []
-    const shapes = [
-        "cone",
-        "cube",
-        "line",
-        "cylinder",
-        "sphere"
-    ]
-    shapes.forEach((shape) => {
-        renderArray.push(<option key={shape} value={shape}>{shape.charAt(0).toUpperCase() + shape.slice(1)}</option>)
-    })
-    return renderArray
-}
-
-
 function SpellAttackModal({ isOpen, toggleClose, attributes, proficiencyBonus, spellData, saveAttack }) {
     const [spellAttack, updateSpell] = useState(spellData)
     const [attrSelected, updateAttrSelected] = useState(attributes[0])
@@ -79,11 +63,12 @@ function SpellAttackModal({ isOpen, toggleClose, attributes, proficiencyBonus, s
         updateProp("damage", damage)
     }
     const attackMod = abilityMod + proficiencyBonus;
+    const signedMod = (attackMod >= 0) ? "+"+attackMod : "-"+attackMod;
     return(
         <Modal 
             isOpen={isOpen}
             onRequestClose={toggleClose}
-            className="AddWeaponModal"
+            className="AddAttackModal AddSpell"
             appElement={document.getElementById('root')}
             style={{
                 overlay: {
@@ -94,7 +79,7 @@ function SpellAttackModal({ isOpen, toggleClose, attributes, proficiencyBonus, s
             <h3>Add Spell Attack</h3>
             <div className="options">
                 <div className="row">
-                    <label>Name:</label>
+                    <label>Spell Name:</label>
                     <input
                         type="text"
                         className="mediumInput"
@@ -111,31 +96,31 @@ function SpellAttackModal({ isOpen, toggleClose, attributes, proficiencyBonus, s
                         selected={attrSelected}
                         selectHandler={handleAttrSelect}
                     />
-                </div>
-                <div className="row">
-                    <label>Spell Attack Mod:</label>
-                    <input type="text" value={attackMod} name="spellAttackMod" readOnly="readonly" />
-                </div>
-                <div className="row">
-                    <label>Range:</label>
-                    <input type="text" name="spellRange" placeholder="60 feet" value={spellAttack.range} onChange={(e) => updateProp("range", e.target.value)}/>
-                </div>
-                <div className="row">
-                    <label>Add Ability Mod to Damage?</label>
                     <input
                         type="checkbox"
                         name="addModifier"
                         checked={spellAttack.addModifier}
                         onChange={() => updateProp("addModifier", !spellAttack.addModifier)}
                     />
+                     <label>Add Modifier to Damage?</label>
+                </div>
+                <div className="row">
+                    <label>Spell Attack Modifier:</label>
+                    <input type="text" className="smallInput" value={signedMod} name="spellAttackMod" readOnly="readonly" />
+                </div>
+                <div className="row">
+                    <label>Range:</label>
+                    <input type="text" name="spellRange" placeholder="60 feet" value={spellAttack.range} onChange={(e) => updateProp("range", e.target.value)}/>
                 </div>
                 <div className="damageType">
                     <div className="row">
                         <label>Damage:</label>
                     </div>
                     {spellAttack.damage.map((damageType, i) => {
+                        damageType.addModifier = spellAttack.addModifier
                         return <DamageType
                                     key={i}
+                                    index={i}
                                     damage={damageType}
                                     abilityMod={abilityMod}
                                     magicBonus={0}
@@ -146,11 +131,11 @@ function SpellAttackModal({ isOpen, toggleClose, attributes, proficiencyBonus, s
                     }
                 </div>
                 <div className="row">
-                    <button title="Add damage type" onClick={(e) => { e.preventDefault(); addDamageType(); }}>+</button>
+                    <button title="Add damage type" class="plusButton flatButton" onClick={(e) => { e.preventDefault(); addDamageType(); }}>+</button>
                 </div>
             </div>
             <div className="row saveRow">
-                <button id="modalSave" onClick={(e) => { e.preventDefault(); saveAttack(spellAttack); }}>Save</button>
+                <button id="modalSave" class="flatButton" onClick={(e) => { e.preventDefault(); saveAttack(spellAttack); }}>Save</button>
             </div>
             <div id="modalClose" title="Close without saving" onClick={handleCloseWithoutSaving}>X</div>
         </Modal>

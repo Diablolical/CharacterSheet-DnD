@@ -1,4 +1,5 @@
 import { calcMod } from "../../Shared/helpers"
+import EditButton from "../../Common/EditButton"
 
 function _printDamage (damage, damageMod) {
     const sign = damageMod >= 0 ? "+" : "-"
@@ -17,16 +18,16 @@ function SpellAttackRow({ index, spell, editCallback, attributes, proficiencyBon
     const sign = attackMod > 0 ? "+" : "-"
     const damageMod = spell.addModifier ? abilityMod : 0
     return(
-        <div className="row">
-            <span>{spell.name}</span>
-            <span className="attackMod">{sign}{attackMod}</span>
-            <span className="damageSection">
+        <tr>
+            <td className="attackCol">{spell.name}</td>
+            <td className="attackCol attackMod">{sign}{attackMod}</td>
+            <td className="attackCol">
                 {spell.damage.map((damageRow, i) => {
                     return _printDamage(damageRow, damageMod)
                 })}
-            </span>
-            <span className="edit"><button onClick={(e) => {e.preventDefault(); editCallback(index, spell);}}>Edit</button></span>
-        </div>
+            </td>
+            <td className="attackCol edit"><EditButton callback={() => editCallback(index, spell)} /></td>
+        </tr>
     )
 }
 
