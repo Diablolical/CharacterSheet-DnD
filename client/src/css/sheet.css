@@ -51,6 +51,10 @@ textarea {
     margin: 0;
 }
 
+button {
+    cursor: pointer;
+}
+
 label {
     display: block;
     font-size: 16px;
@@ -97,8 +101,7 @@ label.large {
 
 .flatButton:hover {
     text-decoration: none;
-    background-color: rgba(0, 0, 0, 0.08);
-    border: 1px solid rgb(0, 0, 0);
+    box-shadow: 0 0 5px rgb(0 0 0 / 30%);
 }
 
 #wrapper {
@@ -321,10 +324,19 @@ label.large {
     -moz-appearance: textfield;
 }
 
-.attrScore input::-webkit-outer-spin-button,
-.attrScore input::-webkit-inner-spin-button {
+#combatStats .attrMod .attrInput {
+    font-size: 35px;
+    -webkit-appearance: none;
+    margin: 0;
+    -moz-appearance: textfield;
+}
+
+input.attrInput::-webkit-outer-spin-button,
+input.attrInput::-webkit-inner-spin-button {
   -webkit-appearance: none;
+  display: none;
   margin: 0;
+  height:auto;
 }
 
 .insp-prof-container {
@@ -499,26 +511,39 @@ label.large {
     margin: 0 .3em;
 }
 
-.weaponsTable {
+.weaponsTable, .itemTable {
     width: 100%;
     font-size: 14px;
     table-layout: fixed;
 }
 
-.weaponsTable .headerRow {
+.weaponsTable .headerRow, .itemTable .headerRow {
     color:#A0A0A0;
 }
 
-.weaponsTable .attackCol {
+.weaponsTable .attackCol.name {
+    width:30%;
+}
+
+.weaponsTable .attackCol.damage {
     width:35%;
 }
 
 .weaponsTable .attackCol.attackMod {
     width: 20%;
+    text-align: center;
 }
 
-.weaponsTable .attackCol.edit {
+.weaponsTable .attackCol.edit,
+.itemTable .itemCol.edit {
     width: 10%;
+    text-align: center;
+}
+
+.weaponsTable .attackCol.delete,
+.itemTable .itemCol.delete {
+    width: 5%;
+    text-align: right;
 }
 
 .weaponsTable .damageSection {
@@ -527,19 +552,29 @@ label.large {
     align-items:center;
 }
 
+.itemTable .itemCol.count, td.count {
+    width:15%;
+    text-align: center;
+}
+
+.itemTable .itemCol.name {
+    width:50%;
+}
+
+.itemTable .itemCol.weight, td.weight {
+    text-align: center;
+    width:15%;
+}
+
+.itemTable .itemCol.attackMod {
+    width: 20%;
+    text-align: center;
+}
+
 .addButton {
-    cursor: pointer;
     float:right;
-    background-color: white;
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    color: rgb(0, 0, 0);
+    padding:0px;
 }
-
-.addButton:hover {
-    text-decoration: none;
-    background-color: rgba(0, 0, 0, 0.08);
-}
-
 .buttonRow {
     display: flex;
     width: 100%;
@@ -589,10 +624,9 @@ label.large {
 }
 
 .plusButton {
-    background-color: #fff;
-    border-radius: 2px;
-    font-size: inherit;
-    padding: .1rem .3rem .1rem .3rem;
+    border-radius: 1px;
+    font-size: 20px;
+    padding: 0px 6px 2px 6px;
     color: black;
 }
 

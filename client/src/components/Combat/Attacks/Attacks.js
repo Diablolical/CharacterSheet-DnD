@@ -40,21 +40,24 @@ const defaultSpellAttack = {
     ]
 }
 
-function _renderAttackRows(attacks, editWeapon, editSpell, attributes, proficiencyBonus) {
+function _renderAttackRows(attacks, editWeapon, editSpell, removeAttack, attributes, proficiencyBonus) {
     return(
         <table className="weaponsTable">
-            <col className='attackCol'></col>
+            <col className='attackCol name'></col>
             <col className="attackCol attackMod"></col>
-            <col className='attackCol'></col>
+            <col className='attackCol damage'></col>
             <col className="attackCol edit"></col>
+            <col className="attackCol delete"></col>
             <thead>
                 <tr className="headerRow">
-                    <th className="attackCol">Name</th>
+                    <th className="attackCol name">Name</th>
                     <th className="attackCol attackMod">Attack +/-</th>
-                    <th className="attackCol">Damage</th>
+                    <th className="attackCol damage">Damage</th>
                     <th className="attackCol edit">Edit</th>
+                    <th className="attackCol delete"></th>
                 </tr>
             </thead>
+            <tbody>
                 {attacks.map((attack, i) => {
                     switch (attack.type) {
                         case 'weapon':
@@ -63,6 +66,7 @@ function _renderAttackRows(attacks, editWeapon, editSpell, attributes, proficien
                                 index={i}
                                 weapon={attack}
                                 editCallback={editWeapon}
+                                removeAttack={removeAttack}
                                 attributes={attributes}
                                 proficiencyBonus={proficiencyBonus}
                             />
@@ -72,6 +76,7 @@ function _renderAttackRows(attacks, editWeapon, editSpell, attributes, proficien
                                 index={i}
                                 spell={attack}
                                 editCallback={editSpell}
+                                removeAttack={removeAttack}
                                 attributes={attributes}
                                 proficiencyBonus={proficiencyBonus}
                             />
@@ -79,6 +84,7 @@ function _renderAttackRows(attacks, editWeapon, editSpell, attributes, proficien
                                 return ""
                     }
                 })}
+            </tbody>
         </table>
     )
 }
@@ -121,6 +127,12 @@ function Attacks({ attributes, proficiencyBonus, attacks, updateAttacks }) {
         toggleAddSpell(true)
     }
 
+    const removeAttack = (index) => {
+        const updated = [...attacks]
+        updated.splice(index,1)
+        updateAttacks(updated)
+    }
+
     const saveAttack = (attack) => {
         const updated = [...attacks]
         updated[currentIndex] = attack
@@ -131,10 +143,10 @@ function Attacks({ attributes, proficiencyBonus, attacks, updateAttacks }) {
         <div id="attacks">
             <div className="block attacks">
                 <span className="sectionLabel"><label>Attacks & Spellcasting</label></span>
-                {attacks.length > 0 && _renderAttackRows(attacks, editWeapon, editSpell, attributes, proficiencyBonus)}
+                {attacks.length > 0 && _renderAttackRows(attacks, editWeapon, editSpell, removeAttack, attributes, proficiencyBonus)}
                 <div className="buttonRow">
-                    <button title="Add Weapon" className="addButton addWeapon" onClick={(e) => { e.preventDefault(); addWeapon(); }}></button>
-                    <button title="Add Spell Attack" className="addButton addSpell" onClick={(e) => { e.preventDefault(); addSpell(); }}>+</button>
+                    <button title="Add Weapon" className="addButton addWeapon flatButton" onClick={(e) => { e.preventDefault(); addWeapon(); }}></button>
+                    <button title="Add Spell Attack" className="addButton addSpell flatButton" onClick={(e) => { e.preventDefault(); addSpell(); }}></button>
                 </div>
             </div>
             <WeaponModal

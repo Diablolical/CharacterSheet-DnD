@@ -11,7 +11,7 @@ function _printDamage (damage, damageMod) {
     )
 }
 
-function SpellAttackRow({ index, spell, editCallback, attributes, proficiencyBonus }) {
+function SpellAttackRow({ index, spell, editCallback, removeAttack, attributes, proficiencyBonus }) {
     const attr = attributes.find((obj) => { return obj.name === spell.attribute})
     const abilityMod = calcMod(attr.score)
     const attackMod = abilityMod + proficiencyBonus
@@ -19,14 +19,15 @@ function SpellAttackRow({ index, spell, editCallback, attributes, proficiencyBon
     const damageMod = spell.addModifier ? abilityMod : 0
     return(
         <tr>
-            <td className="attackCol">{spell.name}</td>
+            <td className="attackCol name">{spell.name}</td>
             <td className="attackCol attackMod">{sign}{attackMod}</td>
-            <td className="attackCol">
+            <td className="attackCol damage">
                 {spell.damage.map((damageRow, i) => {
                     return _printDamage(damageRow, damageMod)
                 })}
             </td>
             <td className="attackCol edit"><EditButton callback={() => editCallback(index, spell)} /></td>
+            <td className="attackCol delete"><span onClick={() => removeAttack()}>X</span></td>
         </tr>
     )
 }

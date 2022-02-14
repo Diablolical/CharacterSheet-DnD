@@ -9,7 +9,7 @@ function _printDamage (damage, mod, bonus) {
     )
 }
 
-function WeaponRow({ index, weapon, editCallback, attributes, proficiencyBonus }) {
+function WeaponRow({ index, weapon, editCallback, removeAttack, attributes, proficiencyBonus }) {
     const attr = attributes.find((obj) => { return obj.name === weapon.attribute})
     const bonus = weapon.isProficient ? proficiencyBonus : 0
     const abilityMod = calcMod(attr.score)
@@ -17,14 +17,15 @@ function WeaponRow({ index, weapon, editCallback, attributes, proficiencyBonus }
     const sign = attackMod > 0 ? "+" : "-"
     return(
         <tr>
-            <td className="attackCol">{weapon.name}</td>
+            <td className="attackCol name">{weapon.name}</td>
             <td className="attackCol attackMod">{sign}{attackMod}</td>
-            <td className="attackCol">
+            <td className="attackCol damage">
                 {weapon.damage.map((damageRow, i) => {
                     return _printDamage(damageRow, abilityMod, weapon.magicBonus)
                 })}
             </td>
             <td className="attackCol edit"><EditButton callback={() => editCallback(index, weapon)} /></td>
+            <td className="attackCol delete"><span onClick={() => removeAttack()}>X</span></td>
         </tr>
     )
 }

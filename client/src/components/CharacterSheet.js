@@ -46,7 +46,13 @@ const defaultCharacterData = {
         { name: "survival", isProficient: false },
     ],
     vitals: {
-
+        "armorClass": 0,
+        "initiative": 0,
+        "speed": 30,
+        "hitPoints": 0,
+        "currentHitPoints":0,
+        "temporaryHitPoints":0,
+        "hitDice":0
     },
     attacks: [],
     features: {

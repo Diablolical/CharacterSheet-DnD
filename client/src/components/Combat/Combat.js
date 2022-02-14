@@ -1,6 +1,6 @@
 import Vitals from './Vitals/Vitals'
 import Attacks from './Attacks/Attacks'
-import Equipment from './Equipment'
+import Equipment from './Equipment/Equipment'
 
 function Combat({ attributes, proficiencyBonus, attacks, updateAttacks }) {
     return (
