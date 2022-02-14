@@ -1,7 +1,6 @@
-import clone from 'clone'
+import clone from "clone";
 
 function DamageType ({ index, damage, abilityMod, magicBonus, updateDamage, remove }) {
-
     const update = (name, value) => {
         const updated = clone(damage)
         updated[name] = value
@@ -25,16 +24,29 @@ function DamageType ({ index, damage, abilityMod, magicBonus, updateDamage, remo
                     onChange={(e) => update('damage', e.target.value)} 
                 />
                 {(damage?.isPrimary || damage?.addModifier) && 
-                    <><span>+&nbsp;</span><span>{damageMod}</span></>
+                    <>
+                      <span>+&nbsp;</span>
+                      <span>{damageMod}</span>
+                    </>
                 }
                 {!damage?.isPrimary &&
                     <><span className="spacer"></span></>}
-                <input type="text" name="damageType" placeholder="Slashing" value={damage.damageType} onChange={(e) => update('damageType', e.target.value)}/>
+                <input
+                  type="text"
+                  name="damageType"
+                  placeholder="Slashing"
+                  value={damage.damageType}
+                  onChange={(e) => update("damageType", e.target.value)}
+                />
                 {index > 0 && 
-                    <><div className="removeDamageType" title="Delete" onClick={remove}>X</div></>
+                    <>
+                      <div className="removeDamageType" title="Delete" onClick={remove}>
+                        X
+                      </div>
+                    </>
                 }
             </div>
     )
 }
 
-export default DamageType
+export default DamageType;

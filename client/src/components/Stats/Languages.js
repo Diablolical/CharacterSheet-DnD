@@ -1,11 +1,11 @@
-function Languages () {
-    return (
-        <div id="languages">
-            <div className="block">
-                <h3>Other Proficiencies & Languages</h3>
-            </div>
-        </div>
-    )
+function Languages() {
+  return (
+    <div id="languages">
+      <div className="block">
+        <h3>Other Proficiencies & Languages</h3>
+      </div>
+    </div>
+  );
 }
 
-export default Languages
+export default Languages;

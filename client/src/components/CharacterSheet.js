@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react'
-import clone from 'clone'
-import GeneralInfo from './General/GeneralInfo'
-import Stats from './Stats/Stats'
-import Combat from './Combat/Combat'
-import Character from './Character/Character'
-import Loading from './Common/Loading'
-import { calcProficiencyBonus, getCharacterData } from './Shared/helpers'
+import { useState, useEffect } from "react";
+import clone from "clone";
+import GeneralInfo from "./General/GeneralInfo";
+import Stats from "./Stats/Stats";
+import Combat from "./Combat/Combat";
+import Character from "./Character/Character";
+import Loading from "./Common/Loading";
+import { calcProficiencyBonus, getCharacterData } from "./Shared/helpers";
 
 const defaultCharacterData = {
     general: {
@@ -23,7 +23,7 @@ const defaultCharacterData = {
         { name: "constitution", score: 10, isProficient: false },
         { name: "intelligence", score: 10, isProficient: false },
         { name: "wisdom", score: 10, isProficient: false },
-        { name: "charisma", score: 10, isProficient: false }
+        { name: "charisma", score: 10, isProficient: false },
     ],
     skills: [
         { name: "acrobatics", isProficient: false },
@@ -60,7 +60,7 @@ const defaultCharacterData = {
             { "traits" : "" },
             { "ideals" : "" },
             { "bonds" : "" },
-            { "flaws" : "" }
+            { "flaws" : "" },
         ]
     }
 }
@@ -91,70 +91,78 @@ function CharacterSheet({ characterId }) {
         }
     }, [])
 
-    const updatePropArray = (stateToUpdate, callback, index, key, newValue) => {
-        const updated = clone(stateToUpdate)
-        updated[index][key] = newValue
-        callback(updated)
+  useEffect((characterId) => {
+    const updateCharacter = (data) => {
+      updateGeneral(data.general);
+      updateAttributes(data.attributes);
+      updateSkills(data.skills);
+      updateFeatures(data.features);
+    };
+    if (characterId) {
+      getCharacterData(characterId, updateCharacter, setLoading);
     }
+  }, []);
 
-    const updateAttributeScore = (name, score) => {
-        score = parseInt(score)
-        const index = _getIndexByName(attributes, name)
-        if (attributes[index].score !== score) {
-            updatePropArray(attributes, updateAttributes, index, 'score', score)
-        }
-    }
-    
-    const updateSaveProficiency = (name, newValue) => {
-        const index = _getIndexByName(attributes, name)
-        updatePropArray(attributes, updateAttributes, index, 'isProficient', newValue)
-    }
+  const updatePropArray = (stateToUpdate, callback, index, key, newValue) => {
+    const updated = clone(stateToUpdate);
+    updated[index][key] = newValue;
+    callback(updated);
+  };
 
-    const updateSkillProficiency = (name, newValue) => {
-        const index = _getIndexByName(skills, name)
-        updatePropArray(skills, updateSkills, index, 'isProficient', newValue)
+  const updateAttributeScore = (name, score) => {
+    score = parseInt(score);
+    const index = _getIndexByName(attributes, name);
+    if (attributes[index].score !== score) {
+      updatePropArray(attributes, updateAttributes, index, "score", score);
     }
+  };
 
-    const updateGeneralInfo = (field, newValue) => {
-        let current = general[field]
-        if (current !== newValue) {
-            const updated = clone(general)
-            updated[field] = newValue
-            updateGeneral(updated)
-        }
-    }
+  const updateSaveProficiency = (name, newValue) => {
+    const index = _getIndexByName(attributes, name);
+    updatePropArray(
+      attributes,
+      updateAttributes,
+      index,
+      "isProficient",
+      newValue
+    );
+  };
 
-    if (loading) {
-        return (<Loading />)
+  const updateSkillProficiency = (name, newValue) => {
+    const index = _getIndexByName(skills, name);
+    updatePropArray(skills, updateSkills, index, "isProficient", newValue);
+  };
+
+  const updateGeneralInfo = (field, newValue) => {
+    let current = general[field];
+    if (current !== newValue) {
+      const updated = clone(general);
+      updated[field] = newValue;
+      updateGeneral(updated);
     }
-    const proficiencyBonus = calcProficiencyBonus(general.level)
-    return (
-        <form name="character-sheet" id="sheet">
-            <GeneralInfo
-                data={general}
-                update={updateGeneralInfo}
-            />
-            <div className="wrapper wide">
-                <Stats
-                    attributes={attributes}
-                    skills={skills}
-                    updateAttributeScore={updateAttributeScore}
-                    updateSaveProficiency={updateSaveProficiency}
-                    updateSkillProficiency={updateSkillProficiency}
-                    proficiencyBonus={proficiencyBonus}
-                />
-                <Combat 
-                    attributes={attributes}
-                    proficiencyBonus={proficiencyBonus}
-                    attacks={attacks}
-                    updateAttacks={updateAttacks}
-                />
-                <Character 
-                    features={features}
-                />
-            </div>
-        </form>
-    )
+  };
+
+  if (loading) {
+    return <Loading />;
+  }
+  const proficiencyBonus = calcProficiencyBonus(general.level);
+  return (
+    <form name="character-sheet" id="sheet">
+      <GeneralInfo data={general} update={updateGeneralInfo} />
+      <div className="wrapper wide">
+        <Stats
+          attributes={attributes}
+          skills={skills}
+          updateAttributeScore={updateAttributeScore}
+          updateSaveProficiency={updateSaveProficiency}
+          updateSkillProficiency={updateSkillProficiency}
+          proficiencyBonus={proficiencyBonus}
+        />
+        <Combat attributes={attributes} proficiencyBonus={proficiencyBonus} attacks={attacks} updateAttacks={updateAttacks} />
+        <Character features={features} />
+      </div>
+    </form>
+  );
 }
 
 export default CharacterSheet;

@@ -19,4 +19,4 @@ function Combat({ attributes, proficiencyBonus, attacks, updateAttacks }) {
     )
 }
 
-export default Combat
+export default Combat;
