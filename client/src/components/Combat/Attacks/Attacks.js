@@ -7,20 +7,20 @@ import SpellAttackRow from './SpellAttackRow'
 
 const defaultWeaponData = {
     name: "",
-    type: "weapon",
     attribute: "strength",
     isProficient: false,
     range: "0",
+    longRange: "0",
     magicBonus: 0,
     critRange: "20",
     damage: [
-        {
-            damage: "",
-            isPrimary: true,
-            damageType: ""
-        }
-    ]
-}
+      {
+        damage: "",
+        isPrimary: true,
+        damageType: "",
+      },
+    ],
+};
 
 const defaultSpellAttack = {
     name: "",
@@ -35,10 +35,10 @@ const defaultSpellAttack = {
         {
             damage: "",
             addModifier: false,
-            damageType: ""
-        }
-    ]
-}
+            damageType: "",
+        },
+    ],
+};
 
 function _renderAttackRows(attacks, editWeapon, editSpell, attributes, proficiencyBonus) {
     return(
@@ -154,7 +154,17 @@ function Attacks({ attributes, proficiencyBonus, attacks, updateAttacks }) {
                 saveAttack={saveAttack}
             />
         </div>
-    )
+      </div>
+      <WeaponModal
+        isOpen={addingWeapon}
+        toggleClose={closeWeaponModal}
+        attributes={attributes}
+        proficiencyBonus={proficiencyBonus}
+        weaponData={currentWeapon}
+        saveWeapon={saveWeapon}
+      />
+    </div>
+  );
 }
 
-export default Attacks
+export default Attacks;

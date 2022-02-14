@@ -1,6 +1,6 @@
-import Vitals from './Vitals/Vitals'
-import Attacks from './Attacks/Attacks'
-import Equipment from './Equipment'
+import Vitals from "./Vitals/Vitals";
+import Attacks from "./Attacks/Attacks";
+import Equipment from "./Equipment";
 
 function Combat({ attributes, proficiencyBonus, attacks, updateAttacks }) {
     return (
@@ -19,4 +19,4 @@ function Combat({ attributes, proficiencyBonus, attacks, updateAttacks }) {
     )
 }
 
-export default Combat
+export default Combat;

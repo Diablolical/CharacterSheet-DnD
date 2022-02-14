@@ -1,18 +1,18 @@
-import CharacterSheet from './components/CharacterSheet'
-import Logo from './images/logo.png'
+import CharacterSheet from "./components/CharacterSheet";
+import Logo from "./images/logo.png";
 
 function App() {
-  const characterId = null // set if loading saved data
+  const characterId = null; // set if loading saved data
 
   return (
     <div id="wrapper">
       <header>
-          <div className="logo">
-            <img id="header" src={Logo} alt="logo" />
-          </div>
+        <div className="logo">
+          <img id="header" src={Logo} alt="logo" />
+        </div>
       </header>
       <div id="fullwidth">
-        <CharacterSheet characterId={characterId} ></CharacterSheet>
+        <CharacterSheet characterId={characterId}></CharacterSheet>
       </div>
     </div>
   );
