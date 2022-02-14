@@ -1,4 +1,6 @@
-import { calcMod } from "../../Shared/helpers";
+import { calcMod } from "../../Shared/helpers"
+import EditButton from "../../Common/EditButton"
+
 
 function _printDamage(damage, mod, bonus) {
   const damageMod = damage.isPrimary ? mod + bonus : 0;
