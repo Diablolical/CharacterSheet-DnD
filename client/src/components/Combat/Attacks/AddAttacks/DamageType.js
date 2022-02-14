@@ -38,7 +38,7 @@ function DamageType ({ index, damage, abilityMod, magicBonus, updateDamage, remo
                   value={damage.damageType}
                   onChange={(e) => update("damageType", e.target.value)}
                 />
-                {index > 0 && 
+                {index > 0 &&
                     <>
                       <div className="removeDamageType" title="Delete" onClick={remove}>
                         X

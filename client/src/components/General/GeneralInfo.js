@@ -9,7 +9,7 @@ function GeneralInfo({ data, update }) {
           <div className="col-third">
             <div className="row" id="characterName">
               <TextInput
-                name="characterName"
+                name="Character Name"
                 value={data.characterName}
                 onChange={(e) => update("characterName", e.target.value)}
               />

@@ -7,6 +7,7 @@ import SpellAttackRow from './SpellAttackRow'
 
 const defaultWeaponData = {
     name: "",
+    type: "weapon",
     attribute: "strength",
     isProficient: false,
     range: "0",
@@ -166,17 +167,7 @@ function Attacks({ attributes, proficiencyBonus, attacks, updateAttacks }) {
                 saveAttack={saveAttack}
             />
         </div>
-      </div>
-      <WeaponModal
-        isOpen={addingWeapon}
-        toggleClose={closeWeaponModal}
-        attributes={attributes}
-        proficiencyBonus={proficiencyBonus}
-        weaponData={currentWeapon}
-        saveWeapon={saveWeapon}
-      />
-    </div>
-  );
+    );
 }
 
 export default Attacks;

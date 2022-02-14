@@ -1,17 +1,24 @@
 import { calcMod } from "../../Shared/helpers"
 import EditButton from "../../Common/EditButton"
 
-function _printDamage (damage, damageMod) {
+function _printDamage (index, damage, damageMod) {
     const sign = damageMod >= 0 ? "+" : "-"
     return(
-        <span className="damageRow">
+        <span className="damageRow" key={index}>
             {damage.damage}&nbsp;
             {damageMod > 0 && <span>{sign}&nbsp;{damageMod}&nbsp;</span>}
             {damage.damageType}</span>
     )
 }
 
-function SpellAttackRow({ index, spell, editCallback, removeAttack, attributes, proficiencyBonus }) {
+function SpellAttackRow({ 
+    index,
+    spell,
+    editCallback,
+    removeAttack,
+    attributes,
+    proficiencyBonus 
+}) {
     const attr = attributes.find((obj) => { return obj.name === spell.attribute})
     const abilityMod = calcMod(attr.score)
     const attackMod = abilityMod + proficiencyBonus
@@ -23,11 +30,11 @@ function SpellAttackRow({ index, spell, editCallback, removeAttack, attributes, 
             <td className="attackCol attackMod">{sign}{attackMod}</td>
             <td className="attackCol damage">
                 {spell.damage.map((damageRow, i) => {
-                    return _printDamage(damageRow, damageMod)
+                    return _printDamage(i, damageRow, damageMod)
                 })}
             </td>
             <td className="attackCol edit"><EditButton callback={() => editCallback(index, spell)} /></td>
-            <td className="attackCol delete"><span onClick={() => removeAttack()}>X</span></td>
+            <td className="attackCol delete"><span title="Remove Spell" className="deleteButton" onClick={() => removeAttack()}>X</span></td>
         </tr>
     )
 }

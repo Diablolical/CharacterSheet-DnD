@@ -55,6 +55,7 @@ const defaultCharacterData = {
         "hitDice":0
     },
     attacks: [],
+    items: [],
     features: {
         personality: [
             { "traits" : "" },
@@ -75,6 +76,7 @@ function CharacterSheet({ characterId }) {
     const [attributes, updateAttributes] = useState(defaultCharacterData.attributes)
     const [skills, updateSkills] = useState(defaultCharacterData.skills)
     const [attacks, updateAttacks] = useState(defaultCharacterData.attacks)
+    const [items, updateItems] = useState(defaultCharacterData.items)
     const [features, updateFeatures] = useState(defaultCharacterData.features)
     const [loading, setLoading] = useState(false)
 
@@ -85,84 +87,80 @@ function CharacterSheet({ characterId }) {
             updateSkills(data.skills)
             updateFeatures(data.features)
             updateAttacks(data.attacks)
+            updateItems(data.items)
         }
         if (characterId) {
             getCharacterData(characterId, updateCharacter, setLoading)
         }
     }, [])
 
-  useEffect((characterId) => {
-    const updateCharacter = (data) => {
-      updateGeneral(data.general);
-      updateAttributes(data.attributes);
-      updateSkills(data.skills);
-      updateFeatures(data.features);
+    const updatePropArray = (stateToUpdate, callback, index, key, newValue) => {
+        const updated = clone(stateToUpdate);
+        updated[index][key] = newValue;
+        callback(updated);
     };
-    if (characterId) {
-      getCharacterData(characterId, updateCharacter, setLoading);
+
+    const updateAttributeScore = (name, score) => {
+        score = parseInt(score);
+        const index = _getIndexByName(attributes, name);
+        if (attributes[index].score !== score) {
+        updatePropArray(attributes, updateAttributes, index, "score", score);
+        }
+    };
+
+    const updateSaveProficiency = (name, newValue) => {
+        const index = _getIndexByName(attributes, name);
+        updatePropArray(
+        attributes,
+        updateAttributes,
+        index,
+        "isProficient",
+        newValue
+        );
+    };
+
+    const updateSkillProficiency = (name, newValue) => {
+        const index = _getIndexByName(skills, name);
+        updatePropArray(skills, updateSkills, index, "isProficient", newValue);
+    };
+
+    const updateGeneralInfo = (field, newValue) => {
+        let current = general[field];
+        if (current !== newValue) {
+            const updated = clone(general);
+            updated[field] = newValue;
+            updateGeneral(updated);
+        }
+    };
+
+    if (loading) {
+        return <Loading />;
     }
-  }, []);
-
-  const updatePropArray = (stateToUpdate, callback, index, key, newValue) => {
-    const updated = clone(stateToUpdate);
-    updated[index][key] = newValue;
-    callback(updated);
-  };
-
-  const updateAttributeScore = (name, score) => {
-    score = parseInt(score);
-    const index = _getIndexByName(attributes, name);
-    if (attributes[index].score !== score) {
-      updatePropArray(attributes, updateAttributes, index, "score", score);
-    }
-  };
-
-  const updateSaveProficiency = (name, newValue) => {
-    const index = _getIndexByName(attributes, name);
-    updatePropArray(
-      attributes,
-      updateAttributes,
-      index,
-      "isProficient",
-      newValue
+    const proficiencyBonus = calcProficiencyBonus(general.level);
+    return (
+        <form name="character-sheet" id="sheet">
+        <GeneralInfo data={general} update={updateGeneralInfo} />
+        <div className="wrapper wide">
+            <Stats
+            attributes={attributes}
+            skills={skills}
+            updateAttributeScore={updateAttributeScore}
+            updateSaveProficiency={updateSaveProficiency}
+            updateSkillProficiency={updateSkillProficiency}
+            proficiencyBonus={proficiencyBonus}
+            />
+            <Combat
+                attributes={attributes}
+                proficiencyBonus={proficiencyBonus}
+                attacks={attacks}
+                updateAttacks={updateAttacks}
+                items={items}
+                updateItems={updateItems}
+            />
+            <Character features={features} />
+        </div>
+        </form>
     );
-  };
-
-  const updateSkillProficiency = (name, newValue) => {
-    const index = _getIndexByName(skills, name);
-    updatePropArray(skills, updateSkills, index, "isProficient", newValue);
-  };
-
-  const updateGeneralInfo = (field, newValue) => {
-    let current = general[field];
-    if (current !== newValue) {
-      const updated = clone(general);
-      updated[field] = newValue;
-      updateGeneral(updated);
-    }
-  };
-
-  if (loading) {
-    return <Loading />;
-  }
-  const proficiencyBonus = calcProficiencyBonus(general.level);
-  return (
-    <form name="character-sheet" id="sheet">
-      <GeneralInfo data={general} update={updateGeneralInfo} />
-      <div className="wrapper wide">
-        <Stats
-          attributes={attributes}
-          skills={skills}
-          updateAttributeScore={updateAttributeScore}
-          updateSaveProficiency={updateSaveProficiency}
-          updateSkillProficiency={updateSkillProficiency}
-          proficiencyBonus={proficiencyBonus}
-        />
-        <Combat attributes={attributes} proficiencyBonus={proficiencyBonus} attacks={attacks} updateAttacks={updateAttacks} />
-        <Character features={features} />
-      </div>
-    </form>
-  );
 }
 
-export default CharacterSheet;
+    export default CharacterSheet;

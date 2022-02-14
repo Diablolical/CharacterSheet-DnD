@@ -32,12 +32,18 @@ function WeaponRow({
       <td className="attackCol name">{weapon.name}</td>
       <td className="attackCol attackMod">{sign}{attackMod}</td>
       <td className="attackCol damage">
+        <div className="damageSection">
           {weapon.damage.map((damageRow, i) => {
             return _printDamage(damageRow, abilityMod, weapon.magicBonus)
           })}
+        </div>
       </td>
-      <td className="attackCol edit"><EditButton callback={() => editCallback(index, weapon)} /></td>
-      <td className="attackCol delete"><span onClick={() => removeAttack()}>X</span></td>
+      <td className="attackCol edit">
+        <EditButton callback={() => editCallback(index, weapon)} />
+      </td>
+      <td className="attackCol delete">
+        <span title="Remove Weapon" className="deleteButton" onClick={() => removeAttack()}>X</span>
+      </td>
     </tr>
   )
 }

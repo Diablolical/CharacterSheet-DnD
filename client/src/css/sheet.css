@@ -103,6 +103,23 @@ label.large {
     box-shadow: 0 0 5px rgb(0 0 0 / 30%);
 }
 
+.plusButton {
+    border-radius: 1px;
+    font-size: 20px;
+    padding: 0px 6px 2px 6px;
+    color: black;
+}
+
+.editButton {
+    padding: 2px;
+    border: 1px solid rgb(255,255,255)
+}
+
+.editButton img {
+    width: 1em;
+    height: 1em;
+}
+
 #wrapper {
   float: none;
   width: 1200px;
@@ -169,6 +186,11 @@ label.large {
   display: inline-flex;
   width: 100%;
   align-items: center;
+}
+
+.saveRow {
+  width: 100%;
+  text-align: center;
 }
 
 .wrapper.wide div.col-third {
@@ -513,12 +535,19 @@ input.attrInput::-webkit-inner-spin-button {
 
 .weaponsTable, .itemTable {
     width: 100%;
-    font-size: 14px;
+    font-size: 16px;
     table-layout: fixed;
 }
 
 .weaponsTable .headerRow, .itemTable .headerRow {
     color:#A0A0A0;
+    text-align: left;
+    font-size:.875em;
+}
+
+.weaponsTable .headerRow th.damage,
+.weaponsTable .headerRow th.attackMod {
+  text-align: center;
 }
 
 .weaponsTable .attackCol.name {
@@ -549,32 +578,19 @@ input.attrInput::-webkit-inner-spin-button {
 .weaponsTable .damageSection {
     display:flex;
     flex-direction: column;
-    align-items:center;
-}
-
-.itemTable .itemCol.count, td.count {
-    width:15%;
-    text-align: center;
-}
-
-.itemTable .itemCol.name {
-    width:50%;
-}
-
-.itemTable .itemCol.weight, td.weight {
-    text-align: center;
-    width:15%;
-}
-
-.itemTable .itemCol.attackMod {
-    width: 20%;
-    text-align: center;
 }
 
 .addButton {
     float:right;
     padding:0px;
 }
+
+.deleteButton {
+  cursor: pointer;
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 .buttonRow {
     display: flex;
     width: 100%;
@@ -621,23 +637,6 @@ input.attrInput::-webkit-inner-spin-button {
 
 .AddAttackModal .row {
     margin-bottom: .2em;
-}
-
-.plusButton {
-    border-radius: 1px;
-    font-size: 20px;
-    padding: 0px 6px 2px 6px;
-    color: black;
-}
-
-.editButton {
-    padding: 2px;
-    border: 1px solid rgb(255,255,255)
-}
-
-.editButton img {
-    width: 1em;
-    height: 1em;
 }
 
 .AddAttackModal input {
@@ -700,6 +699,81 @@ input.attrInput::-webkit-inner-spin-button {
 
 .AddAttackModal.AddSpell span.spacer {
     width: 0;
+}
+
+.itemTable td {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.itemTable .itemCol.count, td.count {
+  width:10%;
+}
+
+.itemTable .headerRow .count {
+  text-align: center;
+}
+
+.itemTable td.count {
+      text-align: center;
+}
+
+.itemTable .itemCol.name {
+    width:55%;
+}
+
+.itemTable .itemName {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+  margin-top: 0;
+  line-height: normal;
+}
+
+.itemTable .itemDescription {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-size: .875rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+  letter-spacing: .0178571429em;
+  text-decoration: inherit;
+  text-transform: inherit;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-top: 0;
+  line-height: normal;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+#equipment .buttonRow {
+  margin-top: 0em;
+}
+
+#equipment .bottomSection {
+  width:100%;
+  display:inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+#equipment .bottomSection span {
+  margin: 0em .1em;
+}
+
+.itemTable .itemCol.weight {
+    text-align: center;
+    width:15%;
+}
+
+.itemTable .itemCol.attackMod {
+    width: 20%;
+    text-align: center;
 }
 
 #personality {
