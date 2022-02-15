@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useParams } from 'react-router-dom'
 import clone from "clone";
 import GeneralInfo from "./General/GeneralInfo";
 import Stats from "./Stats/Stats";
@@ -70,7 +71,7 @@ function _getIndexByName (arr, propertyName) {
     return arr.findIndex((obj) => { return obj.name === propertyName})
 }
 
-function CharacterSheet({ characterId }) {
+function CharacterSheet() {
     //todo: convert to useContext to reduce callbacks (?)
     const [general, updateGeneral] = useState(defaultCharacterData.general)
     const [attributes, updateAttributes] = useState(defaultCharacterData.attributes)
@@ -79,6 +80,8 @@ function CharacterSheet({ characterId }) {
     const [items, updateItems] = useState(defaultCharacterData.items)
     const [features, updateFeatures] = useState(defaultCharacterData.features)
     const [loading, setLoading] = useState(false)
+
+    const { characterId } = useParams();
 
     useEffect((characterId) => {
         const updateCharacter = (data) => {
@@ -92,7 +95,19 @@ function CharacterSheet({ characterId }) {
         if (characterId) {
             getCharacterData(characterId, updateCharacter, setLoading)
         }
-    }, [])
+    }, [characterId])
+
+    const saveCharacter = () => {
+        const saveData = {
+            general: general,
+            attributes: attributes,
+            skills: skills,
+            attacks: attacks,
+            items: items,
+            features: features
+        };
+
+    }
 
     const updatePropArray = (stateToUpdate, callback, index, key, newValue) => {
         const updated = clone(stateToUpdate);

@@ -11,14 +11,18 @@
   },
   "scripts": {
     "build": "cd client && npm run build",
-    "start": "node server/app.js",
+    "start": "npm run app.js",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "dependencies": {
     "clone": "^2.1.2",
+    "dotenv": "^16.0.0",
     "express": "^4.17.2",
     "express-generator": "^4.16.1",
-    "path": "^0.12.7"
+    "knex": "^1.0.3",
+    "path": "^0.12.7",
+    "pg": "^8.7.3",
+    "winston": "^3.6.0"
   },
   "devDependencies": {
     "eslint": "^8.7.0",
@@ -28,5 +32,16 @@
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "nodemon": "^2.0.15"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "test/*",
+      "bin/*"
+    ],
+    "watch": [
+      "client/*",
+      "server/*"
+    ],
+    "ext": "js, css, html, yaml"
   }
 }
