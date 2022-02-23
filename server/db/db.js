@@ -3,7 +3,9 @@ const config = require('./config');
 const logger = require('../helpers/logger');
 
 let knexInstance;
+const environment = process.env.DB_ENV || 'development';
 
+module.exports = knex(config[environment]);
 /**
  * @returns Promise that resolves to the knex instance once secrets are loaded
  */
@@ -12,7 +14,8 @@ async function initDatabase() {
     return knexInstance;
   }
   logger.info('initDatabase() Creating new knex instance');
-  knexInstance = knex(config);
+  logger.info('got config', config[environment]);
+  knexInstance = knex(config[environment]);
   return knexInstance;
 }
 

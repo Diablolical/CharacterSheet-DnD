@@ -93,7 +93,7 @@ function Equipment({ items, updateItems }) {
                 </table>
                 <div className="buttonRow">
                     <button title="Add Item" className="plusButton flatButton" onClick={(e) => { e.preventDefault(); addItem(); }}>+</button>
-                    <div class="weightTotal"></div>
+                    <div className="weightTotal"></div>
                 </div>
                 <div className="bottomSection">
                     <span>Total Weight:</span><span>{totalWeight}&nbsp;lbs</span>

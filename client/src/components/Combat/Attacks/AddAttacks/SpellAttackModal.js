@@ -131,11 +131,11 @@ function SpellAttackModal({ isOpen, toggleClose, attributes, proficiencyBonus, s
                     }
                 </div>
                 <div className="row">
-                    <button title="Add damage type" class="plusButton flatButton" onClick={(e) => { e.preventDefault(); addDamageType(); }}>+</button>
+                    <button title="Add damage type" className="plusButton flatButton" onClick={(e) => { e.preventDefault(); addDamageType(); }}>+</button>
                 </div>
             </div>
             <div className="row saveRow">
-                <button id="modalSave" class="flatButton" onClick={(e) => { e.preventDefault(); saveAttack(spellAttack); }}>Save</button>
+                <button id="modalSave" className="flatButton" onClick={(e) => { e.preventDefault(); saveAttack(spellAttack); }}>Save</button>
             </div>
             <div id="modalClose" title="Close without saving" onClick={handleCloseWithoutSaving}>X</div>
         </Modal>

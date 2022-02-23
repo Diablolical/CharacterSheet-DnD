@@ -82,8 +82,9 @@ function CharacterSheet() {
     const [loading, setLoading] = useState(false)
 
     const { characterId } = useParams();
+    console.log("Client got id: ", characterId);
 
-    useEffect((characterId) => {
+    useEffect(() => {
         const updateCharacter = (data) => {
             updateGeneral(data.general)
             updateAttributes(data.attributes)
@@ -93,7 +94,8 @@ function CharacterSheet() {
             updateItems(data.items)
         }
         if (characterId) {
-            getCharacterData(characterId, updateCharacter, setLoading)
+            console.log("Getting character: " + characterId);
+            getCharacterData(characterId, updateCharacter, setLoading);
         }
     }, [characterId])
 
@@ -106,7 +108,7 @@ function CharacterSheet() {
             items: items,
             features: features
         };
-
+        console.log(saveData);
     }
 
     const updatePropArray = (stateToUpdate, callback, index, key, newValue) => {
@@ -153,28 +155,29 @@ function CharacterSheet() {
     }
     const proficiencyBonus = calcProficiencyBonus(general.level);
     return (
-        <form name="character-sheet" id="sheet">
-        <GeneralInfo data={general} update={updateGeneralInfo} />
-        <div className="wrapper wide">
-            <Stats
-            attributes={attributes}
-            skills={skills}
-            updateAttributeScore={updateAttributeScore}
-            updateSaveProficiency={updateSaveProficiency}
-            updateSkillProficiency={updateSkillProficiency}
-            proficiencyBonus={proficiencyBonus}
-            />
-            <Combat
-                attributes={attributes}
-                proficiencyBonus={proficiencyBonus}
-                attacks={attacks}
-                updateAttacks={updateAttacks}
-                items={items}
-                updateItems={updateItems}
-            />
-            <Character features={features} />
+        <div name="character-sheet" id="sheet">
+            <button onClick={() => saveCharacter()} >Save</button>
+            <GeneralInfo data={general} update={updateGeneralInfo} />
+            <div className="wrapper wide">
+                <Stats
+                    attributes={attributes}
+                    skills={skills}
+                    updateAttributeScore={updateAttributeScore}
+                    updateSaveProficiency={updateSaveProficiency}
+                    updateSkillProficiency={updateSkillProficiency}
+                    proficiencyBonus={proficiencyBonus}
+                />
+                <Combat
+                    attributes={attributes}
+                    proficiencyBonus={proficiencyBonus}
+                    attacks={attacks}
+                    updateAttacks={updateAttacks}
+                    items={items}
+                    updateItems={updateItems}
+                />
+                <Character features={features} />
+            </div>
         </div>
-        </form>
     );
 }
 

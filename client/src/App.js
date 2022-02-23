@@ -1,15 +1,13 @@
 import CharacterSheet from "./components/CharacterSheet";
 import {
   BrowserRouter as Router,
-  Switch,
+  Routes,
   Route
 } from "react-router-dom";
 import Logo from "./images/logo.png";
 
 
 function App() {
-  const characterId = null; // set if loading saved data
-
   return (
     <Router>
       <div id="wrapper">
@@ -19,11 +17,11 @@ function App() {
           </div>
         </header>
         <div id="fullwidth">
-          <Switch>
-    	      <Route exact path='/:characterId'>
-              <CharacterSheet characterId={characterId}></CharacterSheet>
+          <Routes>
+            <Route path='/character' element={<CharacterSheet />} >
+    	        <Route path='/character/:characterId' element={<CharacterSheet />} />
             </Route>
-          </Switch>
+          </Routes>
         </div>
       </div>
     </Router>

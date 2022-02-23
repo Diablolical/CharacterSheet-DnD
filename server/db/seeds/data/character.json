@@ -1,0 +1,202 @@
+[
+    {
+        "general": {
+            "characterName": "Meepo the 5th",
+            "class": "Paladin",
+            "level": "6",
+            "background": "Outlander",
+            "race": "Kobold",
+            "alignment": "Lawful Violent",
+            "experience": 0
+        },
+        "attributes": [
+            {
+                "name": "strength",
+                "score": 9,
+                "isProficient": false
+            },
+            {
+                "name": "dexterity",
+                "score": 19,
+                "isProficient": false
+            },
+            {
+                "name": "constitution",
+                "score": 6,
+                "isProficient": false
+            },
+            {
+                "name": "intelligence",
+                "score": 14,
+                "isProficient": false
+            },
+            {
+                "name": "wisdom",
+                "score": 10,
+                "isProficient": true
+            },
+            {
+                "name": "charisma",
+                "score": 15,
+                "isProficient": true
+            }
+        ],
+        "skills": [
+            {
+                "name": "acrobatics",
+                "isProficient": false
+            },
+            {
+                "name": "animal handling",
+                "isProficient": false
+            },
+            {
+                "name": "arcana",
+                "isProficient": false
+            },
+            {
+                "name": "athletics",
+                "isProficient": true
+            },
+            {
+                "name": "deception",
+                "isProficient": false
+            },
+            {
+                "name": "history",
+                "isProficient": false
+            },
+            {
+                "name": "insight",
+                "isProficient": true
+            },
+            {
+                "name": "intimidation",
+                "isProficient": true
+            },
+            {
+                "name": "investigation",
+                "isProficient": false
+            },
+            {
+                "name": "medicine",
+                "isProficient": false
+            },
+            {
+                "name": "nature",
+                "isProficient": false
+            },
+            {
+                "name": "perception",
+                "isProficient": false
+            },
+            {
+                "name": "performance",
+                "isProficient": false
+            },
+            {
+                "name": "persuasion",
+                "isProficient": false
+            },
+            {
+                "name": "religion",
+                "isProficient": false
+            },
+            {
+                "name": "slight of hand",
+                "isProficient": false
+            },
+            {
+                "name": "stealth",
+                "isProficient": false
+            },
+            {
+                "name": "survival",
+                "isProficient": true
+            }
+        ],
+        "attacks": [
+            {
+                "name": "Rapier",
+                "type": "weapon",
+                "attribute": "dexterity",
+                "isProficient": true,
+                "range": "0",
+                "longRange": "0",
+                "magicBonus": 0,
+                "critRange": "20",
+                "damage": [
+                    {
+                        "damage": "1d8",
+                        "isPrimary": true,
+                        "damageType": "Piercing"
+                    }
+                ]
+            },
+            {
+                "name": "Hand Crossbow",
+                "type": "weapon",
+                "attribute": "dexterity",
+                "isProficient": true,
+                "range": "120",
+                "longRange": "360",
+                "magicBonus": 0,
+                "critRange": "20",
+                "damage": [
+                    {
+                        "damage": "1d6",
+                        "isPrimary": true,
+                        "damageType": "Piercing"
+                    }
+                ]
+            },
+            {
+                "name": "Javalins",
+                "type": "weapon",
+                "attribute": "strength",
+                "isProficient": true,
+                "range": "20",
+                "longRange": "60",
+                "magicBonus": 0,
+                "critRange": "20",
+                "damage": [
+                    {
+                        "damage": "1d6",
+                        "isPrimary": true,
+                        "damageType": "Piercing"
+                    }
+                ]
+            }
+        ],
+        "items": [
+            {
+                "count": 1,
+                "name": "Shield+1",
+                "weight": "5",
+                "description": ""
+            },
+            {
+                "count": 1,
+                "name": "Studded Leather Armor",
+                "weight": "10",
+                "description": ""
+            }
+        ],
+        "features": {
+            "personality": [
+                {
+                    "traits": "Chipper, optimistic, violent AF"
+                },
+                {
+                    "ideals": "VENGEANCE!!!"
+                },
+                {
+                    "bonds": "My 1,303,284 siblings and cousins. Also VEANGEANCE!!!"
+                },
+                {
+                    "flaws": "Impulsive, reckless, some . . .difficulty with nuance"
+                }
+            ]
+        }
+    }
+]
