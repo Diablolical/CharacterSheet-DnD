@@ -20,4 +20,33 @@ async function getCharacterData(characterId, updateCharacter, setLoading) {
   setLoading(false);
 }
 
-export { calcMod, calcProficiencyBonus, getCharacterData };
+async function saveCharacter(characterData, handleSuccess, handleError) {
+  const url = characterData.id ? "/api/character/" + characterData.id : "/api/character/";
+  const method = characterData.id ? 'PATCH' : 'POST';
+  const request = {
+    method,
+    url,
+    data: {
+      ...characterData
+    }
+  };
+
+  const {
+    data: { validationErrors }
+  } = await makeRequest(request);
+
+  if (validationErrors) {
+    handleError(validationErrors[0])
+    return
+  }
+
+  handleSuccess()
+  return
+}
+
+export {
+  calcMod,
+  calcProficiencyBonus,
+  getCharacterData,
+  saveCharacter
+};

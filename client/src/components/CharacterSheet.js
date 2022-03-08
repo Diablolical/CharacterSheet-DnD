@@ -121,7 +121,7 @@ function CharacterSheet() {
         score = parseInt(score);
         const index = _getIndexByName(attributes, name);
         if (attributes[index].score !== score) {
-        updatePropArray(attributes, updateAttributes, index, "score", score);
+            updatePropArray(attributes, updateAttributes, index, "score", score);
         }
     };
 
